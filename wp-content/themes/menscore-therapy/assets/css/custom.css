@@ -1,0 +1,650 @@
+/**
+ * Custom CSS for MensCore Therapy Theme
+ * 
+ * @package MensCoreTherapy
+ * @since 1.0.0
+ */
+
+/* ==========================================================================
+   Custom Components
+   ========================================================================== */
+
+/* Services Grid */
+.therapy-services-grid {
+    display: grid;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.therapy-services-grid.columns-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.therapy-services-grid.columns-3 {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.therapy-services-grid.columns-4 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.service-item {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.service-thumbnail img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.service-content {
+    padding: 1.5rem;
+}
+
+.service-title {
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+}
+
+.service-title a {
+    text-decoration: none;
+    color: #2c3e50;
+}
+
+.service-meta {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+.service-link {
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+/* Testimonials Slider */
+.therapy-testimonials-slider {
+    margin: 2rem 0;
+    position: relative;
+}
+
+.testimonial-item {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.testimonial-content {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.author-image img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author-info {
+    text-align: left;
+}
+
+.author-name {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.author-title {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+/* Contact and Booking Forms */
+.therapy-contact-form,
+.therapy-booking-form {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.contact-form-title,
+.booking-form-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.25);
+}
+
+.form-group input.error,
+.form-group textarea.error,
+.form-group select.error {
+    border-color: #e74c3c;
+}
+
+.field-error {
+    display: block;
+    color: #e74c3c;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.success-message {
+    background: #d4edda;
+    color: #155724;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+/* FAQ Accordion */
+.therapy-faq-accordion {
+    margin: 2rem 0;
+}
+
+.faq-item {
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    background: #f8f9fa;
+    border: none;
+    padding: 1rem 1.5rem;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background: #e9ecef;
+}
+
+.faq-toggle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #3498db;
+}
+
+.faq-answer {
+    display: none;
+    background: #fff;
+}
+
+.faq-content {
+    padding: 1.5rem;
+}
+
+/* Team Grid */
+.therapy-team-grid {
+    display: grid;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.therapy-team-grid.columns-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.therapy-team-grid.columns-3 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.therapy-team-grid.columns-4 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.team-member {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.member-photo img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.member-info {
+    padding: 1.5rem;
+}
+
+.member-name {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+}
+
+.member-title,
+.member-credentials {
+    display: block;
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-bottom: 0.25rem;
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: #fff;
+    padding: 4rem 0;
+    text-align: center;
+    margin: 4rem 0 0;
+}
+
+.cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cta-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.cta-text {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.cta-button {
+    background: #fff;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+}
+
+.cta-button:hover {
+    background: #f8f9fa;
+    color: #2c3e50;
+}
+
+/* Breadcrumbs */
+.breadcrumbs-container {
+    background: #f8f9fa;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.breadcrumbs {
+    font-size: 0.875rem;
+}
+
+.breadcrumbs a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumbs .current {
+    color: #6c757d;
+}
+
+/* Footer Styles */
+.footer-widgets {
+    margin-bottom: 2rem;
+}
+
+.footer-widget-area {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.footer-widget-column .widget {
+    margin-bottom: 2rem;
+}
+
+.footer-widget-column .widget-title {
+    color: #ecf0f1;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.footer-widget-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-widget-column ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-widget-column ul a {
+    color: #bdc3c7;
+    text-decoration: none;
+}
+
+.footer-widget-column ul a:hover {
+    color: #ecf0f1;
+}
+
+.site-info {
+    border-top: 1px solid #34495e;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.copyright p {
+    margin: 0;
+    color: #bdc3c7;
+    font-size: 0.875rem;
+}
+
+.footer-navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-navigation a {
+    color: #bdc3c7;
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+
+.footer-navigation a:hover {
+    color: #ecf0f1;
+}
+
+/* Business Hours Widget */
+.business-hours {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hours-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+}
+
+.hours-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.hours-list li:last-child {
+    border-bottom: none;
+}
+
+.hours-list li.current-day {
+    background: #f8f9fa;
+    padding: 0.5rem 1rem;
+    margin: 0 -1rem;
+    border-radius: 4px;
+}
+
+.day {
+    font-weight: 500;
+}
+
+.time {
+    color: #6c757d;
+}
+
+/* Contact Info Widget */
+.contact-info {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 0.75rem;
+}
+
+.contact-item:last-child {
+    margin-bottom: 0;
+}
+
+.contact-item i {
+    color: #3498db;
+    font-size: 1.1rem;
+}
+
+.contact-item a {
+    color: #2c3e50;
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    color: #3498db;
+}
+
+/* Animation Classes */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fadeInUp {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Service Cards */
+.service-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.service-card.featured-service {
+    border: 2px solid #3498db;
+}
+
+.service-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.service-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-image img {
+    transform: scale(1.05);
+}
+
+.featured-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #e74c3c;
+    color: #fff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.service-details {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+.service-btn {
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .site-info {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-navigation ul {
+        justify-content: center;
+    }
+    
+    .cta-title {
+        font-size: 2rem;
+    }
+    
+    .testimonial-author {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .author-info {
+        text-align: center;
+    }
+    
+    .service-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .site-header,
+    .site-footer,
+    .widget-area,
+    .cta-section,
+    .btn {
+        display: none !important;
+    }
+    
+    .content-area {
+        grid-template-columns: 1fr;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+    }
+}
