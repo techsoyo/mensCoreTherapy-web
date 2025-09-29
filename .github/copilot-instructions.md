@@ -37,6 +37,16 @@ Este repositorio contiene un proyecto WordPress avanzado en fase de desarrollo. 
 ## Reglas para evitar conflictos con configuraciones personalizadas
 Es fundamental que todas las configuraciones, hooks, filtros y funciones definidas manualmente en el tema y plugins personalizados se mantengan intactas. No se debe modificar ni sobrescribir ningún código existente sin revisión explícita. Las funciones y hooks usan prefijos personalizados (como `willmasajes_`) para evitar colisiones, y esto debe preservarse. Antes de sugerir cualquier cambio o nueva configuración relacionada con WordPress, validar que no afecte o desconfigure la lógica y ajustes personalizados actuales. Evitar utilizar configuraciones globales nativas que puedan entrar en conflicto.
 
+## please memorize
+GitHub Copilot, para este repositorio recuerda siempre lo siguiente:
+
+Cuando encuentres problemas, fallos o áreas de mejora en las pull requests existentes, primero realiza las correcciones necesarias en esas mismas pull requests para mantener el control y evitar abrir nuevas PRs innecesarias.
+
+Solo genera nuevas pull requests si no hay pull requests activas relacionadas con el problema detectado.
+
+Prioriza notificar los problemas y sugerir soluciones antes de crear nuevos cambios automáticos.
+
+Este comportamiento debe mantenerse constantemente y aplicarse a todas las revisiones de código y tareas que realices en este repositorio.
 
 ---
 
