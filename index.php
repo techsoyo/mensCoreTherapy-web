@@ -1,4 +1,6 @@
-<?php get_header(); ?>
+<?php if ( ! function_exists('elementor_theme_do_location') || ! elementor_theme_do_location('header') ) {
+  get_header();
+} ?>
 
 <div class="container">
   <?php if (have_posts()) : ?>
@@ -18,3 +20,4 @@
 </div>
 
 <?php get_footer(); ?>
+</main>

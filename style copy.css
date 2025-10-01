@@ -1,0 +1,521 @@
+/*
+Theme Name: Masajista Masculino (Simplificado)
+Theme URI: https://example.com/
+Author: Kiko
+Description: Tema minimal optimizado para Elementor con Home de vídeo parallax al 50vh, header/footer visibles por hover en bordes, y secciones separadas por plantilla.
+Version: 1.0.0
+Text Domain: masajista-masculino
+*/
+
+/* ===== ESTILOS NEOMÓRFICOS BASE ===== */
+:root {
+  /* Colores neomórficos - Paleta Aprobada */
+  --neo-bg: #FFEDE6;                    /* Fondo base */
+  --neo-surface: #FFCDB9;               /* Fondo superficie */
+  --neo-primary: #FF6C32;               /* Primario */
+  --neo-primary-hover: #D73D00;         /* Primario hover */
+  --neo-secondary: #FF8C5F;             /* Secundario */
+  --neo-secondary-soft: #FFAC8C;        /* Secundario suave */
+  --neo-text: #240A00;                  /* Texto titulares */
+  --neo-text-body: #3B1400;             /* Texto cuerpo */
+  --neo-text-secondary: #7D2400;        /* Texto secundario */
+  
+  /* Sombras neomórficas - Paleta Aprobada */
+  --neo-shadow-accent: #AA3000;         /* Acento sombras */
+  --neo-overlay: #FFE5D8;               /* Overlay */
+  --neo-shadow-light: #FFE5D8;          /* Sombras claras */
+  --neo-shadow-dark: #AA3000;           /* Sombras oscuras */
+  --neo-shadow-inset-light: inset 5px 5px 10px #a3b1c6, inset -5px -5px 10px #ffffff;
+  --neo-shadow-outset: 5px 5px 10px #a3b1c6, -5px -5px 10px #ffffff;
+  --neo-shadow-pressed: inset 3px 3px 6px #a3b1c6, inset -3px -3px 6px #ffffff;
+  
+  /* Variables para header y footer */
+  --neo-shadow: rgba(170, 48, 0, 0.3);         /* Sombra para elementos */
+  --neo-highlight: rgba(255, 229, 216, 0.3);   /* Highlight para efectos */
+  --neo-text-primary: #FFEDE6;                 /* Color de texto principal */
+  
+  /* Transiciones suaves */
+  --neo-transition: all 0.3s ease;
+}
+
+/* Clase base neomórfica */
+.neo-element {
+  background: var(--neo-bg);
+  border-radius: 15px;
+  box-shadow: var(--neo-shadow-outset);
+  transition: var(--neo-transition);
+  border: none;
+  outline: none;
+}
+
+/* Botón neomórfico */
+.neo-button {
+  background: var(--neo-bg);
+  border: none;
+  border-radius: 12px;
+  box-shadow: var(--neo-shadow-outset);
+  color: var(--neo-text);
+  cursor: pointer;
+  font-weight: 600;
+  padding: 12px 24px;
+  transition: var(--neo-transition);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.neo-button:hover {
+  box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff;
+  transform: translateY(-2px);
+}
+
+.neo-button:active {
+  box-shadow: var(--neo-shadow-pressed);
+  transform: translateY(0);
+}
+
+/* Card neomórfica */
+.neo-card {
+  background: var(--neo-bg);
+  border-radius: 20px;
+  box-shadow: var(--neo-shadow-outset);
+  padding: 30px;
+  margin: 20px 0;
+  transition: var(--neo-transition);
+}
+
+.neo-card:hover {
+  box-shadow: 10px 10px 20px #a3b1c6, -10px -10px 20px #ffffff;
+  transform: translateY(-5px);
+}
+
+/* Sección neomórfica */
+.neo-section {
+  background: var(--neo-bg);
+  border-radius: 25px;
+  box-shadow: var(--neo-shadow-outset);
+  padding: 40px;
+  margin: 30px 0;
+}
+
+/* Input neomórfico */
+.neo-input {
+  background: var(--neo-bg);
+  border: none;
+  border-radius: 10px;
+  box-shadow: var(--neo-shadow-inset-light);
+  color: var(--neo-text);
+  padding: 15px 20px;
+  font-size: 16px;
+  transition: var(--neo-transition);
+  width: 100%;
+}
+
+.neo-input:focus {
+  box-shadow: inset 3px 3px 6px #a3b1c6, inset -3px -3px 6px #ffffff;
+  outline: none;
+}
+
+/* Header neomórfico */
+.neo-header {
+  background: var(--neo-bg);
+  box-shadow: 0 8px 15px rgba(163, 177, 198, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 0 0 20px 20px;
+}
+
+/* Footer neomórfico */
+.neo-footer {
+  background: linear-gradient(135deg, var(--neo-bg) 0%, #d1d9e6 100%);
+  box-shadow: 0 -8px 15px rgba(163, 177, 198, 0.3);
+  border-radius: 20px 20px 0 0;
+}
+
+/* Texto con estilo neomórfico */
+.neo-text-emboss {
+  color: var(--neo-text);
+  text-shadow: 1px 1px 2px #ffffff, -1px -1px 2px #a3b1c6;
+}
+
+/* Iconos neomórficos */
+.neo-icon {
+  background: var(--neo-bg);
+  border-radius: 50%;
+  box-shadow: var(--neo-shadow-outset);
+  padding: 15px;
+  transition: var(--neo-transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.neo-icon:hover {
+  box-shadow: 6px 6px 12px #a3b1c6, -6px -6px 12px #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ===== ESTILOS GLOBALES NEOMÓRFICOS ===== */
+body {
+  background: linear-gradient(135deg, #e0e5ec 0%, #d1d9e6 100%);
+  color: var(--neo-text);
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Contenedor principal */
+.container,
+.site-main,
+.entry-content {
+  background: var(--neo-bg);
+  border-radius: 20px;
+    box-shadow: var(--neo-shadow-outset);
+  padding: 30px;
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+/* Títulos neomórficos */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--neo-text);
+  text-shadow: 1px 1px 2px #ffffff, -1px -1px 2px #a3b1c6;
+  margin-bottom: 20px;
+}
+
+/* Párrafos */
+p {
+  color: var(--neo-text-light);
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Enlaces */
+a {
+  color: var(--neo-primary);
+  text-decoration: none;
+  transition: var(--neo-transition);
+}
+
+a:hover {
+  color: var(--neo-secondary);
+  text-shadow: 0 0 5px rgba(255, 107, 107, 0.3);
+}
+
+/* Imágenes neomórficas */
+img {
+  border-radius: 15px;
+  box-shadow: var(--neo-shadow-outset);
+  transition: var(--neo-transition);
+}
+
+img:hover {
+  box-shadow: 10px 10px 20px #a3b1c6, -10px -10px 20px #ffffff;
+  transform: translateY(-5px);
+}
+
+/* Formularios neomórficos */
+form {
+  background: var(--neo-bg);
+  border-radius: 20px;
+  box-shadow: var(--neo-shadow-outset);
+  padding: 30px;
+  margin: 20px 0;
+}
+
+/* Tablas neomórficas */
+table {
+  background: var(--neo-bg);
+  border-radius: 15px;
+  box-shadow: var(--neo-shadow-outset);
+  overflow: hidden;
+  width: 100%;
+  margin: 20px 0;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid rgba(163, 177, 198, 0.2);
+}
+
+th {
+  background: linear-gradient(145deg, #d1d9e6, #e0e5ec);
+  color: var(--neo-text);
+  font-weight: 600;
+  text-shadow: 1px 1px 2px #ffffff, -1px -1px 2px #a3b1c6;
+}
+
+/* Listas neomórficas */
+ul, ol {
+  background: var(--neo-bg);
+  border-radius: 15px;
+  box-shadow: inset 3px 3px 6px #a3b1c6, inset -3px -3px 6px #ffffff;
+  padding: 20px 30px;
+  margin: 15px 0;
+}
+
+li {
+  margin-bottom: 8px;
+  color: var(--neo-text-light);
+}
+
+/* Videos y multimedia */
+video, iframe {
+  border-radius: 15px;
+  box-shadow: var(--neo-shadow-outset);
+  transition: var(--neo-transition);
+}
+
+video:hover, iframe:hover {
+  box-shadow: 12px 12px 24px #a3b1c6, -12px -12px 24px #ffffff;
+  transform: translateY(-3px);
+}
+
+/* Elementor sections override */
+/* .elementor-section {
+  background: var(--neo-bg) !important;
+  border-radius: 25px !important;
+  box-shadow: var(--neo-shadow-outset) !important;
+  margin: 20px 0 !important;
+  padding: 40px 20px !important;
+} */
+
+/* body:not(.home) .elementor-section {
+  background: var(--neo-bg);
+  border-radius: 25px;
+  box-shadow: var(--neo-shadow-outset);
+  margin: 20px 0;
+  padding: 40px 20px;
+} */
+
+/* En Home, deja el hero a sangre sin caja */
+.home .elementor-section {
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.elementor-widget {
+  background: transparent !important;
+}
+
+/* WordPress blocks */
+.wp-block {
+  background: var(--neo-bg);
+  border-radius: 15px;
+  box-shadow: var(--neo-shadow-outset);
+  padding: 20px;
+  margin: 15px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .neo-element,
+  .neo-card,
+  .neo-section {
+    margin: 10px;
+    padding: 20px;
+  }
+  
+  .neo-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+/* ===== SOLUCIÓN ESPACIO EN BLANCO FOOTER ===== */
+/* Anula el margin-bottom de la última sección de Elementor para eliminar espacio en home */
+.elementor-section:last-of-type {
+  margin-bottom: 0 !important;
+}
+
+/* Flujo normal + scroll habilitado */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  height: auto;
+  /* <- evita bloquear scroll */
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* <- asegura scroll vertical */
+}
+
+/* Quita el layout flex del body (era el que te podía bloquear) */
+body {
+  display: block;
+  /* <- en lugar de flex */
+}
+
+/* Footer normal (sin empujarlo con auto) */
+.neo-footer {
+  margin-top: 0 !important;
+}
+
+/* Header por encima de todo */
+#site-header,
+.mm-header,
+.header {
+  position: sticky;
+  /* o fixed si prefieres */
+  top: 0;
+  z-index: 100000;
+}
+
+/* Hero y overlays por debajo del header */
+.mm-hero,
+.hero,
+.video-hero {
+  position: relative;
+  z-index: 1;
+}
+
+.mm-hero__overlay,
+.hero-overlay {
+  z-index: 1;
+}
+
+/* El vídeo no debe capturar eventos */
+.mm-hero__video {
+  pointer-events: none;
+}
+
+/***** FIX URGENTE: header visible + scroll habilitado *****/
+
+/* 1) Fuerza header por encima de todo y visible */
+#site-header, .mm-header, header.header {
+  position: fixed;      /* fijo, no sticky */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100000;      /* por encima del hero/overlays */
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+}
+
+/* Si hay barra de admin, baja el header */
+.admin-bar #site-header,
+.admin-bar .mm-header { top: 32px; }
+
+/* 2) Asegura espacio bajo el header para que no lo tape el contenido */
+:root { --header-h: 80px; }
+@media (max-width: 768px){ :root { --header-h: 64px; } }
+
+body { padding-top: var(--header-h) !important; }
+
+/* 3) Devuelve el flujo normal del documento (evita body flex y 100% rígidos) */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  height: auto !important;
+  overflow-x: hidden;
+  overflow-y: auto !important;
+}
+
+/* 4) Quita layout “footer pegado” que bloqueaba el scroll */
+body { display: block !important; }
+.neo-footer { margin-top: 0 !important; }
+
+/* 5) El vídeo/overlay del hero no puede capturar scroll ni tapar el header */
+.mm-hero, .hero, .video-hero { position: r
+
+  /***** FIX URGENTE: header visible + scroll habilitado *****/
+  
+    /* 1) Fuerza header por encima de todo y visible */
+    #site-header,
+    .mm-header,
+    header.header {
+      position: fixed;
+      /* fijo, no sticky */
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100000;
+      /* por encima del hero/overlays */
+      transform: translateY(0) !important;
+      opacity: 1 !important;
+    }
+  
+    /* Si hay barra de admin, baja el header */
+    .admin-bar #site-header,
+    .admin-bar .mm-header {
+      top: 32px;
+    }
+  
+    /* 2) Asegura espacio bajo el header para que no lo tape el contenido */
+    :root {
+      --header-h: 80px;
+    }
+  
+    @media (max-width: 768px) {
+      :root {
+        --header-h: 64px;
+      }
+    }
+  
+    body {
+      padding-top: var(--header-h) !important;
+    }
+  
+    /* 3) Devuelve el flujo normal del documento (evita body flex y 100% rígidos) */
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      height: auto !important;
+      overflow-x: hidden;
+      overflow-y: auto !important;
+    }
+  
+    /* 4) Quita layout “footer pegado” que bloqueaba el scroll */
+    body {
+      display: block !important;
+    }
+  
+    .neo-footer {
+      margin-top: 0 !important;
+    }
+  
+    /* 5) El vídeo/overlay del hero no puede capturar scroll ni tapar el header */
+    .mm-hero,
+    .hero,
+    .video-hero {
+      position: relative;
+      z-index: 1;
+    }
+  
+    .mm-hero__overlay,
+    .hero-overlay {
+      z-index: 1;
+      pointer-events: none;
+    }
+  
+    .mm-hero__video {
+      pointer-events: none;
+      z-index: -1;
+    }
+  
+    /* 6) Desactiva los “edges” flotantes (podían interceptar el puntero) */
+    #mm-top-edge,
+    #mm-bottom-edge {
+      display: none !important;
+    }
+  
+    /* 7) En HOME no metas cajas opacas de Elementor encima del hero */
+    .home .elementor-section {
+      background: transparent !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  
+    /* 8) Solo por prueba: asegura que hay altura de página para poder hacer scroll */
+    .home main,
+    .home .home-main {
+      min-height: 120vh;
+    }
+  
+    /* quítalo luego si no lo necesitas */

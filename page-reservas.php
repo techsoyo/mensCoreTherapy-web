@@ -1,6 +1,12 @@
 <?php
-/* Template: Reservas (por slug) */
-get_header();
+
+/**
+ * Template Name: Reservas
+ */
+
+if ( ! function_exists('elementor_theme_do_location') || ! elementor_theme_do_location('header') ) {
+  get_header();
+}
 get_template_part('template-parts/reservas');
 ?>
 <section class="page-wrap">

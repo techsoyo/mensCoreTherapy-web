@@ -1,6 +1,8 @@
 <?php
 /* Template base para páginas (Elementor-friendly) */
-get_header(); ?>
+if ( ! function_exists('elementor_theme_do_location') || ! elementor_theme_do_location('header') ) {
+  get_header();
+} ?>
 
 <main id="primary" class="site-main">
   <?php if (have_posts()) : ?>

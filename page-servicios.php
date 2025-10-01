@@ -1,6 +1,11 @@
 <?php
-/* Template: Servicios (por slug) */
-get_header();
+
+/**
+ * Template Name: Servicios */
+
+if ( ! function_exists('elementor_theme_do_location') || ! elementor_theme_do_location('header') ) {
+  get_header();
+}
 get_template_part('template-parts/servicios');
 ?>
 <section class="page-wrap">

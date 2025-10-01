@@ -1,0 +1,145 @@
+/**
+ * Estilos CSS para el efecto parallax en la página de servicios
+ */
+
+/* Variables CSS para el efecto parallax */
+:root {
+  --scroll-offset: 0px;
+  --parallax-offset: 0px;
+}
+
+/* Efecto parallax mejorado para la sección de servicios */
+.mm-servicios {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  color: #fff;
+  padding: 80px 0;
+}
+
+/* Contenedor del fondo parallax con mejor rendimiento */
+.mm-servicios::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background-image: url('../images/torso.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: -2;
+  will-change: transform;
+  transform: translateY(var(--scroll-offset, 0px)) translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Alternativa usando transform para mejor rendimiento */
+.mm-servicios.parallax-active::before {
+  background-attachment: scroll;
+  transform: translate3d(0, var(--parallax-offset, 0px), 0);
+}
+
+/* Overlay mejorado */
+.mm-servicios::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0.4) 100%);
+  z-index: -1;
+}
+
+/* Contenedor con efectos de cristal */
+.mm-servicios .container {
+  position: relative;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 40px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Título mejorado */
+.mm-servicios h1 {
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  margin-bottom: 30px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Cards con efecto de cristal mejorado */
+.mm-servicios .mm-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(15px) saturate(180%);
+  color: #111;
+  transition: all 0.3s ease;
+}
+
+.mm-servicios .mm-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Optimizaciones para dispositivos móviles */
+@media (max-width: 768px) {
+  .mm-servicios::before {
+    background-attachment: scroll;
+    position: absolute;
+    height: 100%;
+    transform: none;
+  }
+
+  .mm-servicios .container {
+    padding: 24px;
+    margin: 16px;
+  }
+
+  /* Desactivar algunos efectos en móviles para mejor rendimiento */
+  .mm-servicios .mm-card {
+    backdrop-filter: blur(8px);
+  }
+}
+
+/* Optimización para dispositivos de bajo rendimiento */
+@media (prefers-reduced-motion: reduce) {
+  .mm-servicios::before {
+    background-attachment: scroll;
+    transform: none !important;
+  }
+
+  .mm-servicios .mm-card {
+    transition: none;
+  }
+
+  .mm-servicios .mm-card:hover {
+    transform: none;
+  }
+}
+
+/* Mejoras para pantallas de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  .mm-servicios::before {
+    background-image: url('../images/torso.jpgx');
+  }
+}

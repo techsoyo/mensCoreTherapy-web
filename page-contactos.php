@@ -1,11 +1,13 @@
 <?php
-/* Template: Contactos (por slug) */
-get_header();
-get_template_part('template-parts/contactos');
+
+/**
+ * Template Name: Contactos
+ */
+if (! function_exists('elementor_theme_do_location') || ! elementor_theme_do_location('header')) {
+  get_header();
+}
 ?>
-<section class="page-wrap">
-  <div class="container">
-    <?php while (have_posts()) { the_post(); the_content(); } ?>
-  </div>
-</section>
+<main id="primary" role="main">
+  <?php get_template_part('template-parts/contactos'); ?>
+</main>
 <?php get_footer(); ?>

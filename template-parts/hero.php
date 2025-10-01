@@ -9,7 +9,7 @@ $ci = mm_get_contact_info();
   <?php endif; ?>
 
   <div class="mm-hero__overlay">
-    <div class="mm-hero__content montserrat-alternates-regular">
+   <div class="mm-hero__content montserrat-alternates-regular">
       <h1 class="mm-hero__title">Masajes Profesionales para Hombres</h1>
       <p class="mm-hero__subtitle">Experiencias de relajación y bienestar</p>
       <p class="mm-hero__claim">Discreción, profesionalidad y resultados garantizados 100% Discreto</p>
