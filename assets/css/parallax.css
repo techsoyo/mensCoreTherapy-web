@@ -6,7 +6,7 @@
 :root {
   --scroll-offset: 0px;
   --parallax-offset: 0px;
-  --parallax-image-url: url('../images/torso.jpg');
+  --parallax-image-url: url('/wp-content/themes/masajista-masculino/assets/images/torso.jpg');
 }
 
 /* Efecto parallax mejorado para la sección de servicios */
