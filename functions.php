@@ -38,7 +38,7 @@ add_action('wp_enqueue_scripts', function () {
     );
 
     // Parallax CSS - Solo en la página de servicios, depende de neomorphic
-    if (is_page('servicios') || is_page('services') || is_page_template('page-servicios.php') || get_post_meta(get_the_ID(), '_wp_page_template', true) === 'page-servicios.php') {
+    if (is_page('servicios') || is_page('services') || is_page_template('page-servicios.php') || is_post_type_archive('servicio') || get_post_meta(get_the_ID(), '_wp_page_template', true) === 'page-servicios.php') {
         wp_enqueue_style(
             'mm-parallax',
             get_template_directory_uri() . '/assets/css/parallax.css',
@@ -58,7 +58,7 @@ add_action('wp_enqueue_scripts', function () {
     );
 
     // Parallax JS - Solo en la página de servicios
-    if (is_page('servicios') || is_page('services') || is_page_template('page-servicios.php') || get_post_meta(get_the_ID(), '_wp_page_template', true) === 'page-servicios.php') {
+    if (is_page('servicios') || is_page('services') || is_page_template('page-servicios.php') || is_post_type_archive('servicio') || get_post_meta(get_the_ID(), '_wp_page_template', true) === 'page-servicios.php') {
         wp_enqueue_script(
             'mm-parallax',
             get_template_directory_uri() . '/assets/js/parallax.js',
