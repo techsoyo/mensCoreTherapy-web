@@ -6,6 +6,7 @@
 :root {
   --scroll-offset: 0px;
   --parallax-offset: 0px;
+  --parallax-image-url: url('../images/torso.jpg');
 }
 
 /* Efecto parallax mejorado para la sección de servicios */
@@ -19,13 +20,13 @@
 
 /* Contenedor del fondo parallax con mejor rendimiento */
 .mm-servicios::before {
-  content: '';
+  content: \'\';
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 120%;
-  background-image: url('../images/torso.jpg');
+  background-image: var(--parallax-image-url);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -44,7 +45,7 @@
 
 /* Overlay mejorado */
 .mm-servicios::after {
-  content: '';
+  content: \'\';
   position: absolute;
   top: 0;
   left: 0;
@@ -135,13 +136,5 @@
 
   .mm-servicios .mm-card:hover {
     transform: none;
-  }
-}
-
-/* Mejoras para pantallas de alta densidad */
-@media (-webkit-min-device-pixel-ratio: 2),
-(min-resolution: 192dpi) {
-  .mm-servicios::before {
-    background-image: url('../images/torso.jpg');
   }
 }
