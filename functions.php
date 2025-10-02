@@ -38,7 +38,7 @@ add_action('wp_enqueue_scripts', function () {
     );
 
     // Parallax CSS - Solo en la página de servicios, depende de neomorphic
-    if (is_page('servicios') || is_page_template('page-servicios.php')) {
+    if (is_page('servicios') || is_page('services') || is_page_template('page-servicios.php') || get_post_meta(get_the_ID(), '_wp_page_template', true) === 'page-servicios.php') {
         wp_enqueue_style(
             'mm-parallax',
             get_template_directory_uri() . '/assets/css/parallax.css',
@@ -58,7 +58,7 @@ add_action('wp_enqueue_scripts', function () {
     );
 
     // Parallax JS - Solo en la página de servicios
-    if (is_page('servicios') || is_page_template('page-servicios.php')) {
+    if (is_page('servicios') || is_page('services') || is_page_template('page-servicios.php') || get_post_meta(get_the_ID(), '_wp_page_template', true) === 'page-servicios.php') {
         wp_enqueue_script(
             'mm-parallax',
             get_template_directory_uri() . '/assets/js/parallax.js',
@@ -94,13 +94,6 @@ add_action('after_setup_theme', function () {
     add_image_size('mm-card', 800, 600, true);
 });
 
-/**
- * Desactivar editor de bloques en páginas si se usa Elementor
- */
-add_filter('use_block_editor_for_post_type', function ($use, $type) {
-    if ($type === 'page') return false;
-    return $use;
-}, 10, 2);
 
 /**
  * Permitir subida de MP4 si está restringida
@@ -257,67 +250,6 @@ add_action('wp_enqueue_scripts', function () {
     );
 }, 999);
 
-// ————————————————
-// PRIORIDAD A TU TEMA (desactiva headers/footers de HFE/Elementor)
-// ————————————————
-add_action('after_setup_theme', function () {
-    // Asegura tus menús (si no lo tenías ya)
-    add_theme_support('menus');
-    register_nav_menus([
-        'primary' => __('Menú principal', 'masajista-masculino'),
-    ]);
-}, 5);
-
-// 1) Si el tema declarara soporte para HFE, lo anulamos.
-add_action('after_setup_theme', function () {
-    remove_theme_support('elementor-header-footer');
-}, 20);
-
-// 2) Fuerza a NO renderizar header/footer de HFE aunque el plugin esté activo.
-add_filter('hfe_enable_header', '__return_false', 999);
-add_filter('hfe_enable_footer', '__return_false', 999);
-
-// 3) Evita que Elementor "ocupe" la ubicación de header/footer.
-add_filter('elementor/theme/should_render_location', function ($should_render, $location) {
-    if (in_array($location, ['header', 'footer'], true)) {
-        return false;
-    }
-    return $should_render;
-}, 10, 2);
-
-// 4) Limpia clases del <body> que delatan plantillas HFE (y activan sus estilos).
-add_filter('body_class', function ($classes) {
-    $bloquear = ['ehf-header', 'ehf-footer', 'ehf-template-masajista-masculino', 'ehf-stylesheet-masajista-masculino'];
-    return array_values(array_diff($classes, $bloquear));
-}, 20);
-
-// 5) Quita los CSS de HFE para que no pisen tus estilos.
-add_action('wp_enqueue_scripts', function () {
-    $handles = [
-        'hfe-style',
-        'hfe-widgets-style',
-        'hfe-icons-list',
-        'hfe-social-icons',
-        'hfe-social-share-icons-brands',
-        'hfe-social-share-icons-fontawesome',
-        'hfe-nav-menu-icons',
-    ];
-    foreach ($handles as $h) {
-        wp_dequeue_style($h);
-        wp_deregister_style($h);
-    }
-}, 100);
-
-// 6) Seguridad extra: aunque Elementor/HFE intenten pintar, al final de todo los ocultamos del DOM.
-add_action('wp_head', function () { ?>
-    <style id="mm-enforce-theme-header-footer">
-        header#masthead,
-        .elementor-location-header,
-        .elementor-location-footer {
-            display: none !important;
-        }
-    </style>
-<?php }, 999);
 
 add_action('init', function () {
     register_post_type('servicio', [
