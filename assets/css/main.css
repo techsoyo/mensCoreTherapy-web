@@ -112,20 +112,32 @@
   box-sizing: border-box;
 }
 
+/* Body styles - configured to allow page-specific backgrounds */
 body {
   margin: 0;
   font-family: "Montserrat Alternates", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   color: #111;
-  background: #fff;
+  /* Default background - can be overridden by page-specific styles  
+  background: #ffffff;
   padding-top: 84px;
-  /* Espacio para header fijo */
+  /* Espacio para header fijo  
   padding-bottom: 120px;
   /* Espacio para footer fijo */
 }
 
+/* Override any potential conflicting background colors  
+body:not(.page-template-page-servicios):not(.page-id-7) {
+  background: #c46767 !important;
+}
+
+/* Ensure services page can have its own background 
+body.page-template-page-servicios,
+body.page-id-7 {
+  background: transparent !important;
+}*/
+
 @media (max-width: 768px) {
   body {
-
     padding-bottom: 140px;
   }
 }
@@ -142,7 +154,7 @@ body {
   position: fixed;
   left: 0;
   right: 0;
-  z-index: 99990;
+  z-index: 100;
   background: rgba(17, 17, 17, .88);
   backdrop-filter: blur(8px);
   color: #fff;
@@ -316,75 +328,11 @@ body {
   padding: 40px 0;
 }
 
-/* Fondo específico para la página de Servicios con efecto parallax */
-.mm-servicios {
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
-  color: #fff;
-  padding: 80px 0;
-}
-
-/* Contenedor del fondo parallax */
-.mm-servicios::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120%;
-  background-image: url('../images/torso.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  z-index: -2;
-  will-change: transform;
-}
-
-/* Overlay para mejorar legibilidad */
-.mm-servicios::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: -1;
-}
-
-.mm-servicios .container {
-  position: relative;
-  z-index: 1;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 40px;
-  border-radius: 12px;
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.mm-servicios h1 {
-  color: #fff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  margin-bottom: 30px;
-  font-size: 2.5rem;
-}
-
-/* Regla altamente específica para forzar el efecto parallax en la página 'Servicios' */
-body.page-id-7 .mm-servicios::before {
-  background-image: url('../images/torso.jpg') !important;
-  background-attachment: fixed !important;
-}
-
-/* Fallback para dispositivos móviles donde background-attachment: fixed puede causar problemas */
-@media (max-width: 768px) {
-  .mm-servicios::before {
-    background-attachment: scroll;
-    position: absolute;
-    height: 100%;
-  }
-}
+/* 
+NOTE: .mm-servicios styles have been moved to parallax.css 
+to avoid conflicts with the parallax effect.
+The parallax.css file handles all background and styling for the services section.
+*/
 
 /* Cards & grids */
 .mm-grid {

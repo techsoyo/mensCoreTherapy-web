@@ -122,9 +122,11 @@
 
 /* Optimización para dispositivos de bajo rendimiento */
 @media (prefers-reduced-motion: reduce) {
-  .mm-servicios::before {
+
+  html body .mm-servicios::before,
+  body.page .mm-servicios::before {
     background-attachment: scroll;
-    transform: none !important;
+    transform: none;
   }
 
   .mm-servicios .mm-card {
@@ -140,6 +142,6 @@
 @media (-webkit-min-device-pixel-ratio: 2),
 (min-resolution: 192dpi) {
   .mm-servicios::before {
-    background-image: url('../images/torso.jpgx');
+    background-image: url('../images/torso.jpg');
   }
 }

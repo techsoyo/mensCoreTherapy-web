@@ -10,7 +10,7 @@ add_action('wp_enqueue_scripts', function () {
         'mm-fonts',
         'https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap',
         [],
-        null
+        '1.0.0'
     );
 
     // Font Awesome
@@ -26,26 +26,26 @@ add_action('wp_enqueue_scripts', function () {
         'mm-main',
         get_template_directory_uri() . '/assets/css/main.css',
         ['mm-fonts', 'font-awesome'],
-        filemtime(get_template_directory() . '/assets/css/main.css')
+        '1.0.0'
     );
 
-    // Parallax CSS - Solo en la página de servicios
-    if (is_page('servicios') || is_page_template('page-servicios.php')) {
-        wp_enqueue_style(
-            'mm-parallax',
-            get_template_directory_uri() . '/assets/css/parallax.css',
-            ['mm-main'],
-            filemtime(get_template_directory() . '/assets/css/parallax.css')
-        );
-    }
-
-    // Neomorphic Effects CSS
+    // Neomorphic Effects CSS - Se carga antes que parallax para evitar conflictos de renderizado
     wp_enqueue_style(
         'mm-neomorphic',
         get_template_directory_uri() . '/assets/css/neomorphic-effects.css',
         ['mm-main'],
-        filemtime(get_template_directory() . '/assets/css/neomorphic-effects.css')
+        '1.0.0'
     );
+
+    // Parallax CSS - Solo en la página de servicios, depende de neomorphic
+    if (is_page('servicios') || is_page_template('page-servicios.php')) {
+        wp_enqueue_style(
+            'mm-parallax',
+            get_template_directory_uri() . '/assets/css/parallax.css',
+            ['mm-main', 'mm-neomorphic'],
+            '1.0.0'
+        );
+    }
 
 
     // Main JS
@@ -252,8 +252,8 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style(
         'mm-hotfix',
         get_stylesheet_directory_uri() . '/assets/css/hotfix.css',
-        [], // sin dependencias para que cargue lo último
-        null
+        ['mm-main', 'mm-neomorphic'], // dependencias explícitas para cargar después
+        '1.0.0'
     );
 }, 999);
 

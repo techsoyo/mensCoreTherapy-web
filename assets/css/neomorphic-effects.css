@@ -5,9 +5,11 @@
   0% {
     box-shadow: 5px 5px 10px #a3b1c6, -5px -5px 10px #ffffff;
   }
+
   50% {
     box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff;
   }
+
   100% {
     box-shadow: 5px 5px 10px #a3b1c6, -5px -5px 10px #ffffff;
   }
@@ -17,9 +19,11 @@
   0% {
     box-shadow: 5px 5px 10px #a3b1c6, -5px -5px 10px #ffffff, 0 0 0 rgba(255, 107, 107, 0);
   }
+
   50% {
     box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff, 0 0 20px rgba(255, 107, 107, 0.3);
   }
+
   100% {
     box-shadow: 5px 5px 10px #a3b1c6, -5px -5px 10px #ffffff, 0 0 0 rgba(255, 107, 107, 0);
   }
@@ -47,7 +51,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
   transition: left 0.6s;
 }
 
@@ -122,7 +126,7 @@
 .neo-border {
   border: 2px solid transparent;
   background: linear-gradient(#e0e5ec, #e0e5ec) padding-box,
-              linear-gradient(145deg, #a3b1c6, #ffffff) border-box;
+    linear-gradient(145deg, #a3b1c6, #ffffff) border-box;
 }
 
 /* Scrollbar neomórfica */
@@ -180,7 +184,7 @@
 .neo-modal {
   display: none;
   position: fixed;
-  z-index: 10000;
+  z-index: 90;
   left: 0;
   top: 0;
   width: 100%;
@@ -205,6 +209,7 @@
     opacity: 0;
     transform: scale(0.8) translateY(-50px);
   }
+
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -223,8 +228,13 @@
 }
 
 @keyframes neo-spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Progress bar neomórfico */
@@ -284,11 +294,11 @@
   box-shadow: 2px 2px 4px #a3b1c6, -2px -2px 4px #ffffff;
 }
 
-input:checked + .neo-slider {
+input:checked+.neo-slider {
   background: linear-gradient(145deg, #ff6b6b, #ff8e8e);
 }
 
-input:checked + .neo-slider:before {
+input:checked+.neo-slider:before {
   transform: translateX(30px);
   background: #ffffff;
 }

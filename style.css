@@ -128,13 +128,15 @@ a:hover {
   color: var(--neo-secondary);
 }
 
-/* Elementor en Home */
-.home .elementor-section {
-  background: transparent !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
+/* Elementor en Home - Uso especificidad alta para evitar !important */
+body.home .elementor .elementor-section,
+body.home .elementor-section.elementor-section,
+.home .elementor .elementor-section {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* Bloques de WordPress */
@@ -162,10 +164,10 @@ a:hover {
 }
 
 /* Grid de servicios */
-.mm-servicios {
+/* .mm-servicios {
   padding: 80px 0;
   background: #fafafa;
-}
+} */
 
 .mm-servicios h1 {
   text-align: center;
