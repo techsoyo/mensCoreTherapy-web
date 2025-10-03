@@ -1,5 +1,3 @@
-</div><!-- #content-wrap -->
-
 <!-- FOOTER MINIMALISTA (como en la imagen) -->
 <footer id="site-footer" class="mm-footer" role="contentinfo" aria-label="<?php esc_attr_e('Pie de página', 'masajista-masculino'); ?>" style="
   background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/fonde-header.webp');
@@ -12,15 +10,14 @@
   box-shadow: none;
   overflow: hidden;
 ">
-  <!-- Overlay para mejor legibilidad -->
+  <!-- Overlay sutil para mantener la textura visible -->
   <div style="
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(170, 48, 0, 0.85);
-    backdrop-filter: blur(5px);
+    background: rgba(170, 48, 0, 0.25);
     z-index: 0;
   "></div>
 
@@ -39,11 +36,12 @@
   justify-items: center;
   color: #FFEDE6;
   font-size: 0.665rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
   ">
 
     <!-- Columna 1: Logo -->
     <div style="display: flex; align-items: center; justify-content: start; width: 100%;">
-  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-sin-fondo.png" alt="Logo" style="max-height: 4rem; width: auto;">
+  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-sin-fondo.png" alt="Logo" style="max-height: 4rem; width: auto; filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.5));">
     </div>
 
     <!-- Columna 2: Botones WhatsApp y Email (h4 encima de botones) -->

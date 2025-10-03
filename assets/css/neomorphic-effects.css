@@ -268,6 +268,7 @@
   height: 0;
 }
 
+/* 
 .neo-slider {
   position: absolute;
   cursor: pointer;
@@ -292,13 +293,53 @@
   transition: 0.4s;
   border-radius: 50%;
   box-shadow: 2px 2px 4px #a3b1c6, -2px -2px 4px #ffffff;
-}
+} */
 
-input:checked+.neo-slider {
+/* input:checked+.neo-slider {
   background: linear-gradient(145deg, #ff6b6b, #ff8e8e);
 }
 
 input:checked+.neo-slider:before {
   transform: translateX(30px);
   background: #ffffff;
+} */
+
+/* Estilos neomórficos para formularios */
+.neo-input {
+  background: #e0e5ec;
+  border: none !important;
+  border-radius: 15px !important;
+  box-shadow: inset 5px 5px 10px #a3b1c6, inset -5px -5px 10px #ffffff;
+  color: #2d3142;
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  width: 100%;
+  transition: box-shadow 0.3s ease;
+}
+
+.neo-input:focus {
+  outline: none;
+  box-shadow: inset 8px 8px 15px #a3b1c6, inset -8px -8px 15px #ffffff;
+}
+
+.neo-button {
+  background: #e0e5ec;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px #a3b1c6, -5px -5px 10px #ffffff;
+  color: #2d3142;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.neo-button:hover {
+  box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff;
+  transform: translateY(-2px);
+}
+
+.neo-button:active {
+  box-shadow: inset 5px 5px 10px #a3b1c6, inset -5px -5px 10px #ffffff;
+  transform: translateY(0);
 }

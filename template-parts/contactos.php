@@ -36,22 +36,19 @@
       echo '</ul></div>';
     }
     ?>
-    <form class="mm-form" method="post" action="<?php echo esc_url(get_permalink()); ?>" novalidate>
+    <form class="mm-form neo-form" method="post" action="<?php echo esc_url(get_permalink()); ?>" novalidate>
       <?php wp_nonce_field('mm_contacto'); ?>
       <div class="form-row">
-        <label for="name"><?php _e('Nombre', 'masajista-masculino'); ?> *</label>
-        <input type="text" id="name" name="name" required maxlength="80" />
+        <input type="text" id="name" name="name" class="neo-input" placeholder="<?php _e('Nombre', 'masajista-masculino'); ?> *" required maxlength="80" />
       </div>
       <div class="form-row">
-        <label for="email"><?php _e('Email', 'masajista-masculino'); ?> *</label>
-        <input type="email" id="email" name="email" required maxlength="120" />
+        <input type="email" id="email" name="email" class="neo-input" placeholder="<?php _e('Email', 'masajista-masculino'); ?> *" required maxlength="120" />
       </div>
       <div class="form-row">
-        <label for="message"><?php _e('Mensaje', 'masajista-masculino'); ?> *</label>
-        <textarea id="message" name="message" rows="6" required maxlength="2000"></textarea>
+        <textarea id="message" name="message" class="neo-input" placeholder="<?php _e('Mensaje', 'masajista-masculino'); ?> *" rows="6" required maxlength="2000"></textarea>
       </div>
       <div class="form-actions">
-        <button type="submit" name="mm_contacto_submit" class="btn btn-primary"><?php _e('Enviar', 'masajista-masculino'); ?></button>
+        <button type="submit" name="mm_contacto_submit" class="neo-button"><?php _e('Enviar', 'masajista-masculino'); ?></button>
       </div>
     </form>
   </div>

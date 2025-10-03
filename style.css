@@ -2,7 +2,7 @@
 Theme Name: Masajista Masculino (Simplificado)
 Theme URI: https://example.com/
 Author: Kiko
-Description: Tema minimal optimizado para Elementor con Home de vídeo parallax al 50vh, header/footer visibles por hover en bordes, y secciones separadas por plantilla.
+Description: Tema minimal con efectos neomórficos, parallax en servicios, header/footer interactivos, y secciones modulares por plantilla.
 Version: 1.0.0
 Text Domain: masajista-masculino
 */
@@ -87,7 +87,8 @@ Text Domain: masajista-masculino
 body {
   background: linear-gradient(135deg, #e0e5ec 0%, #d1d9e6 100%);
   color: var(--neo-text);
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  /* Fuente principal para el cuerpo */
 }
 
 .container,
@@ -107,12 +108,16 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: 'Montserrat Alternates', sans-serif;
+  /* Montserrat Alternates para títulos */
   color: var(--neo-text);
   text-shadow: 1px 1px 2px #ffffff, -1px -1px 2px #a3b1c6;
   margin-bottom: 1.25rem;
 }
 
 p {
+  font-family: 'Montserrat', sans-serif;
+  /* Montserrat para párrafos */
   color: var(--neo-text-body);
   line-height: 1.6;
   margin-bottom: 1rem;
@@ -126,17 +131,6 @@ a {
 
 a:hover {
   color: var(--neo-secondary);
-}
-
-/* Elementor en Home - Uso especificidad alta para evitar !important */
-body.home .elementor .elementor-section,
-body.home .elementor-section.elementor-section,
-.home .elementor .elementor-section {
-  background: transparent;
-  border-radius: 0;
-  box-shadow: none;
-  margin: 0;
-  padding: 0;
 }
 
 /* Bloques de WordPress */
@@ -233,4 +227,286 @@ body.home .elementor-section.elementor-section,
   padding: 10px 20px 25px;
   color: #555;
   line-height: 1.5;
+}
+
+/* Ajustes para la página de servicios */
+body.page-template-servicios .container,
+body.page-template-servicios .site-main,
+body.page-template-servicios .entry-content {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.page-template-servicios {
+  background: transparent !important;
+}
+
+/* Ajustes para el archive de servicios (custom post type) */
+body.post-type-archive-servicio .container,
+body.post-type-archive-servicio .site-main,
+body.post-type-archive-servicio .entry-content {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.post-type-archive-servicio {
+  background: transparent !important;
+}
+
+
+
+/* Estilos unificados para Header y Footer */
+.mm-header,
+.mm-footer {
+  background-image: url("assets/images/fonde-header.png");
+  background-size: cover;
+  background-position: center;
+  color: #FFEDE6;
+  margin: 0;
+  padding: 0.14rem 0.5rem;
+  /* Ajustado para ser consistente */
+  border-radius: 0;
+  /* Eliminar border-radius específico del footer */
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.mm-header__inner,
+.mm-footer>div:first-of-type {
+  /* Seleccionar el div principal del footer */
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  width: 90%;
+  margin: 0 auto;
+  padding: 0.14rem 0.5rem;
+  /* Ajustado para ser consistente */
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: 0.19rem;
+  align-items: center;
+  justify-items: center;
+  color: #FFEDE6;
+  font-size: 0.665rem;
+}
+
+.mm-header .mm-logo img,
+.mm-footer .mm-logo img {
+  /* Asumiendo que el footer también tendrá un .mm-logo */
+  max-height: 4rem;
+  width: auto;
+}
+
+.mm-header .mm-logo a,
+.mm-footer .mm-logo a {
+  color: #FFEDE6;
+  /* Color del texto del logo para que sea visible */
+  text-decoration: none;
+}
+
+.mm-header .mm-menu a {
+  color: #FFEDE6;
+  /* Color de los enlaces del menú */
+}
+
+.mm-header .mm-menu a:hover {
+  color: var(--neo-primary);
+  /* Color al pasar el ratón */
+}
+
+/* Overlay para el header y footer */
+.mm-header::before,
+.mm-footer::before {
+  content: ";
+ position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(170, 48, 0, 0.85);
+  backdrop-filter: blur(5px);
+  z-index: 0;
+}
+
+.mm-header {
+  position: relative;
+  /* Para que el ::before se posicione correctamente */
+}
+
+.mm-header .mm-header__inner {
+  position: relative;
+  /* Para que el contenido del header esté por encima del overlay */
+  z-index: 1;
+}
+
+
+
+/* Estilos específicos para el footer */
+.mm-footer__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  width: 90%;
+  margin: 0 auto;
+  padding: 0.14rem 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: 0.19rem;
+  align-items: center;
+  justify-items: center;
+  color: #FFEDE6;
+  font-size: 0.665rem;
+}
+
+.mm-footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.24rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.mm-footer__col--logo {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.mm-footer__logo {
+  max-height: 4rem;
+  width: auto;
+}
+
+.mm-footer__col--buttons {
+  text-align: center;
+}
+
+.mm-footer__heading {
+  margin: 0;
+  font-size: 0.81rem;
+  color: var(--neo-text-primary);
+}
+
+.mm-footer__buttons-wrap {
+  display: flex;
+  gap: 0.38rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.mm-footer__button {
+  color: #240A00;
+  padding: 0.14rem 0.33rem;
+  background: #FFEDE6;
+  border-radius: 0.3rem;
+  box-shadow: 0.08rem 0.08rem 0.2rem #AA3000, -0.08rem -0.08rem 0.2rem #ffffff;
+  text-decoration: none;
+  font-size: 0.57rem;
+  display: flex;
+  align-items: center;
+  gap: 0.14rem;
+  transition: all 0.3s ease;
+}
+
+.mm-footer__button:hover {
+  color: var(--neo-primary);
+  transform: translateY(-0.04rem);
+}
+
+.mm-footer__button i {
+  font-size: 0.62rem;
+}
+
+.mm-footer__col--contact {
+  align-items: flex-end;
+  text-align: right;
+  justify-self: end;
+}
+
+.mm-footer__contact-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 22rem;
+  color: var(--neo-text-secondary);
+  font-size: 0.677rem;
+  line-height: 1.2;
+}
+
+.mm-footer__contact-group {
+  flex: 0 0 auto;
+  text-align: left;
+}
+
+.mm-footer__contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: left;
+  min-width: 9rem;
+}
+
+.mm-footer__contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.38rem;
+}
+
+.mm-footer__contact-item i {
+  color: var(--neo-primary);
+  font-size: 0.74rem;
+  min-width: 0.74rem;
+}
+
+.mm-footer__copyright {
+  border-top: 1px solid var(--neo-accent);
+  padding: 1px 0;
+  text-align: center;
+  color: var(--neo-text-secondary);
+  font-size: 0.55rem;
+  background: var(--neo-overlay);
+  margin: 0;
+}
+
+/* Media queries para el footer */
+@media (max-width: 768px) {
+  .mm-footer__inner {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem 0.5rem;
+  }
+
+  .mm-footer__col {
+    align-items: center;
+    text-align: center;
+  }
+
+  .mm-footer__col--logo {
+    align-items: center;
+  }
+
+  .mm-footer__col--contact {
+    align-items: center;
+    text-align: center;
+    justify-self: center;
+  }
+
+  .mm-footer__contact-wrap {
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .mm-footer__contact-details {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* Flip Card Styles */
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
 }

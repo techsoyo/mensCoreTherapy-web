@@ -5,10 +5,10 @@ if (!defined('ABSPATH')) exit;
  * Enqueue styles & scripts
  */
 add_action('wp_enqueue_scripts', function () {
-    // Google Fonts: Montserrat Alternates y Montserrat
+    // Google Fonts: Solo las fuentes necesarias
     wp_enqueue_style(
         'mm-fonts',
-        'https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap',
+        'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;1,100&family=Montserrat+Alternates:wght@400&display=swap',
         [],
         '1.0.0'
     );
@@ -156,7 +156,7 @@ function mm_get_contact_info()
 
 /**
  * Sembrado de páginas (UNA sola vez tras activar tema)
- * - Usa slugs canon: servicios, precios, contactos, reservas,
+ * - Usa slugs canon: servicios, contactos, reservas,
  * - Si existe la versión singular (contacto/reserva), la renombra a plural si el plural no existe.
  * - Si no existe ninguna, crea la página con contenido placeholder.
  */
@@ -165,7 +165,6 @@ add_action('after_switch_theme', function () {
 
     $map = [
         'servicios' => ['Servicios', []],
-        'precios'   => ['Precios',   []],
         'contactos' => ['Contactos', ['contacto']],
         'reservas'  => ['Reservas',  ['reserva']],
     ];
@@ -282,13 +281,21 @@ add_action('add_meta_boxes', function () {
 });
 function mm_servicio_mb_html($post)
 {
+    wp_nonce_field('mm_servicio_save', 'mm_servicio_nonce');
     $price = get_post_meta($post->ID, '_mm_precio', true);
     $dur   = get_post_meta($post->ID, '_mm_duracion', true);
     echo '<p><label>Precio </label><input type="text" name="_mm_precio" value="' . esc_attr($price) . '" style="width:100%"></p>';
     echo '<p><label>Duración</label><input type="text" name="_mm_duracion" value="' . esc_attr($dur) . '" style="width:100%"></p>';
 }
-add_action('save_post_servicio', function ($id) {
-    if (defined('DOING_AUTOSAVE')) return;
-    if (isset($_POST['_mm_precio'])) update_post_meta($id, '_mm_precio', sanitize_text_field($_POST['_mm_precio']));
-    if (isset($_POST['_mm_duracion'])) update_post_meta($id, '_mm_duracion', sanitize_text_field($_POST['_mm_duracion']));
+add_action('save_post', function ($id) {
+    if (get_post_type($id) !== 'servicio') return;
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    if (!current_user_can('edit_post', $id)) return;
+    
+    if (isset($_POST['_mm_precio'])) {
+        update_post_meta($id, '_mm_precio', sanitize_text_field($_POST['_mm_precio']));
+    }
+    if (isset($_POST['_mm_duracion'])) {
+        update_post_meta($id, '_mm_duracion', sanitize_text_field($_POST['_mm_duracion']));
+    }
 });

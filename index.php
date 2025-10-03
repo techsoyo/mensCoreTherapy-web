@@ -1,6 +1,4 @@
-<?php if ( ! function_exists('elementor_theme_do_location') || ! elementor_theme_do_location('header') ) {
-  get_header();
-} ?>
+<?php get_header(); ?>
 
 <div class="container">
   <?php if (have_posts()) : ?>
