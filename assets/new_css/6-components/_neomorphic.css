@@ -1,0 +1,46 @@
+/* === COMPONENTES NEOMÓRFICOS CENTRALIZADOS === */
+.neo-element {
+  background: var(--neo-bg);
+  border-radius: 1rem;
+  box-shadow: var(--neo-shadow-outset);
+  transition: var(--transition-normal);
+}
+
+.neo-button {
+  background: var(--neo-bg);
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow: var(--neo-shadow-outset);
+  color: var(--neo-text);
+  cursor: pointer;
+  font-weight: var(--font-weight-semibold);
+  padding: 0.75rem 1.5rem;
+  transition: var(--transition-normal);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.neo-button:hover {
+  box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff;
+  transform: translateY(-2px);
+}
+
+.neo-input {
+  background: var(--neo-bg);
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow: var(--neo-shadow-inset);
+  color: var(--neo-text);
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  width: 100%;
+  transition: var(--transition-normal);
+}
+
+.neo-card {
+  background: var(--neo-bg);
+  border-radius: 1.25rem;
+  box-shadow: var(--neo-shadow-outset);
+  padding: 2rem;
+  margin: 1.25rem 0;
+}

@@ -1,0 +1,41 @@
+:root {
+  /* === PALETA DE COLORES === */
+  --neo-bg: #FFEDE6;
+  --neo-surface: #FFCDB9;
+  --neo-primary: #FF6C32;
+  --neo-primary-hover: #D73D00;
+  --neo-secondary: #FF8C5F;
+  --neo-text: #240A00;
+  --neo-text-body: #3B1400;
+
+  /* === SOMBRAS NEOMÓRFICAS === */
+  --neo-shadow-light: #FFE5D8;
+  --neo-shadow-dark: #AA3000;
+  --neo-shadow-outset: 5px 5px 10px #a3b1c6, -5px -5px 10px #ffffff;
+  --neo-shadow-inset: inset 5px 5px 10px #a3b1c6, inset -5px -5px 10px #ffffff;
+
+  /* === ESPACIADO === */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* === TIPOGRAFÍA === */
+  --font-primary: 'Montserrat', sans-serif;
+  --font-secondary: 'Montserrat Alternates', sans-serif;
+  --font-weight-thin: 100;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+
+  /* === BREAKPOINTS === */
+  --bp-mobile: 480px;
+  --bp-tablet: 768px;
+  --bp-desktop: 1024px;
+  --bp-wide: 1200px;
+
+  /* === TRANSICIONES === */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.6s ease;
+}

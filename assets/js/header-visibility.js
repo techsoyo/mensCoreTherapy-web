@@ -14,38 +14,18 @@ document.addEventListener('DOMContentLoaded', function() {
         header.style.top = '0';
         header.style.left = '0';
         header.style.width = '100%';
-        header.style.zIndex = '9998';
+        header.style.zIndex = '9999';
         
-        // Calcular la altura del header y ajustar/crear el espacio compensatorio
-        const headerHeight = header.offsetHeight;
-        let spacer = document.getElementById('header-spacer') || document.querySelector('div[style*="height: 85px"]');
-        
-        if (spacer) {
-            spacer.style.height = headerHeight + 'px';
-            console.log('Espacio compensatorio ajustado a: ' + headerHeight + 'px');
-        } else {
-            // Crear un nuevo espaciador si no existe
-            const newSpacer = document.createElement('div');
-            newSpacer.id = 'header-spacer';
-            newSpacer.style.height = headerHeight + 'px';
-            document.body.insertBefore(newSpacer, document.body.firstChild.nextSibling);
-            console.log('Nuevo espacio compensatorio creado: ' + headerHeight + 'px');
-        }
+        console.log('Header fijo aplicado correctamente');
     } else {
         // No hacemos throw, solo un log informativo (mantener consola limpia en producción)
         console.info('header-visibility: no se encontró un header conocido (auto-header/site-header).');
     }
     
-    // Ajustar al cambiar el tamaño de la ventana
-    window.addEventListener('resize', function() {
-        const hdr = document.getElementById('auto-header') || document.getElementById('site-header') || document.querySelector('header');
-        if (hdr) {
-            const headerHeight = hdr.offsetHeight;
-            const spacer = document.getElementById('header-spacer') || document.querySelector('div[style*="height"]');
-            
-            if (spacer) {
-                spacer.style.height = headerHeight + 'px';
-            }
-        }
-    });
+    // Remover cualquier espaciador existente que pueda haber sido creado anteriormente
+    const existingSpacer = document.getElementById('header-spacer');
+    if (existingSpacer) {
+        existingSpacer.remove();
+        console.log('Espaciador eliminado');
+    }
 });

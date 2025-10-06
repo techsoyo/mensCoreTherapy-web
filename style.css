@@ -1,11 +1,18 @@
 /*
-Theme Name: Masajista Masculino (Simplificado)
+Theme Name: Masajista Masculino
 Theme URI: https://example.com/
 Author: Kiko
 Description: Tema minimal con efectos neomórficos, parallax en servicios, header/footer interactivos, y secciones modulares por plantilla.
 Version: 1.0.0
 Text Domain: masajista-masculino
 */
+
+/* ===== NOTA IMPORTANTE =====
+ * Los estilos del header y footer están en archivos separados:
+ * - assets/css/4-layout/header.css
+ * - assets/css/4-layout/footer.css
+ * Esto facilita el mantenimiento y evita conflictos.
+ */
 
 /* ===== ESTILOS NEOMÓRFICOS BASE ===== */
 :root {
@@ -18,6 +25,7 @@ Text Domain: masajista-masculino
   --neo-secondary-soft: #FFAC8C;
   --neo-text: #240A00;
   --neo-text-body: #3B1400;
+  --neo-text-primary: #FFEDE6;
   --neo-text-secondary: #7D2400;
   --neo-shadow-accent: #AA3000;
   --neo-overlay: #FFE5D8;
@@ -88,7 +96,8 @@ body {
   background: linear-gradient(135deg, #e0e5ec 0%, #d1d9e6 100%);
   color: var(--neo-text);
   font-family: 'Montserrat', sans-serif;
-  /* Fuente principal para el cuerpo */
+  margin: 0;
+  padding: 0;
 }
 
 .container,
@@ -109,7 +118,6 @@ h4,
 h5,
 h6 {
   font-family: 'Montserrat Alternates', sans-serif;
-  /* Montserrat Alternates para títulos */
   color: var(--neo-text);
   text-shadow: 1px 1px 2px #ffffff, -1px -1px 2px #a3b1c6;
   margin-bottom: 1.25rem;
@@ -117,7 +125,6 @@ h6 {
 
 p {
   font-family: 'Montserrat', sans-serif;
-  /* Montserrat para párrafos */
   color: var(--neo-text-body);
   line-height: 1.6;
   margin-bottom: 1rem;
@@ -152,16 +159,16 @@ a:hover {
   }
 
   .neo-button {
-    padding: 0.625rem 1.25rem;
+    padding: 0.625rem 1rem;
     font-size: 0.875rem;
   }
 }
 
-/* Grid de servicios */
-/* .mm-servicios {
+/* ===== GRID DE SERVICIOS ===== */
+
+.mm-servicios {
   padding: 80px 0;
-  background: #fafafa;
-} */
+}
 
 .mm-servicios h1 {
   text-align: center;
@@ -229,7 +236,8 @@ a:hover {
   line-height: 1.5;
 }
 
-/* Ajustes para la página de servicios */
+/* ===== AJUSTES PARA PÁGINA DE SERVICIOS ===== */
+
 body.page-template-servicios .container,
 body.page-template-servicios .site-main,
 body.page-template-servicios .entry-content {
@@ -253,10 +261,9 @@ body.post-type-archive-servicio {
   background: transparent !important;
 }
 
+/* ===== FOOTER ===== */
+/* NOTA: Estilos detallados del footer están en assets/css/4-layout/footer.css */
 
-
-/* Estilos unificados para Header y Footer */
-.mm-header,
 .mm-footer {
   background-image: url("assets/images/fonde-header.png");
   background-size: cover;
@@ -264,61 +271,15 @@ body.post-type-archive-servicio {
   color: #FFEDE6;
   margin: 0;
   padding: 0.14rem 0.5rem;
-  /* Ajustado para ser consistente */
   border-radius: 0;
-  /* Eliminar border-radius específico del footer */
   box-shadow: none;
   overflow: hidden;
-}
-
-.mm-header__inner,
-.mm-footer>div:first-of-type {
-  /* Seleccionar el div principal del footer */
   position: relative;
-  z-index: 1;
-  max-width: 100%;
-  width: 90%;
-  margin: 0 auto;
-  padding: 0.14rem 0.5rem;
-  /* Ajustado para ser consistente */
-  display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
-  gap: 0.19rem;
-  align-items: center;
-  justify-items: center;
-  color: #FFEDE6;
-  font-size: 0.665rem;
 }
 
-.mm-header .mm-logo img,
-.mm-footer .mm-logo img {
-  /* Asumiendo que el footer también tendrá un .mm-logo */
-  max-height: 4rem;
-  width: auto;
-}
-
-.mm-header .mm-logo a,
-.mm-footer .mm-logo a {
-  color: #FFEDE6;
-  /* Color del texto del logo para que sea visible */
-  text-decoration: none;
-}
-
-.mm-header .mm-menu a {
-  color: #FFEDE6;
-  /* Color de los enlaces del menú */
-}
-
-.mm-header .mm-menu a:hover {
-  color: var(--neo-primary);
-  /* Color al pasar el ratón */
-}
-
-/* Overlay para el header y footer */
-.mm-header::before,
 .mm-footer::before {
-  content: ";
- position: absolute;
+  content: '';
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -328,20 +289,6 @@ body.post-type-archive-servicio {
   z-index: 0;
 }
 
-.mm-header {
-  position: relative;
-  /* Para que el ::before se posicione correctamente */
-}
-
-.mm-header .mm-header__inner {
-  position: relative;
-  /* Para que el contenido del header esté por encima del overlay */
-  z-index: 1;
-}
-
-
-
-/* Estilos específicos para el footer */
 .mm-footer__inner {
   position: relative;
   z-index: 1;
@@ -506,7 +453,8 @@ body.post-type-archive-servicio {
   }
 }
 
-/* Flip Card Styles */
+/* ===== FLIP CARD STYLES ===== */
+
 .flip-card.flipped .flip-card-inner {
   transform: rotateY(180deg);
 }

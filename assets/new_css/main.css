@@ -1,0 +1,391 @@
+/* ===== MAIN.CSS - ARCHIVO PRINCIPAL DE IMPORTACIÓN ===== */
+
+/* 
+  ARQUITECTURA CSS BASADA EN ITCSS (Inverted Triangle CSS)
+  Orden de importación de más genérico a más específico
+*/
+
+/* === 1. SETTINGS - Variables, configuraciones globales === */
+@import '1-settings/_variables.css';
+
+/* === 2. TOOLS - Mixins, funciones, herramientas === */
+@import '2-tools/_functions.css';
+
+/* === 3. GENERIC - Reset, normalize, box-sizing === */
+@import '3-generic/_normalize.css';
+@import '3-generic/_base.css';
+
+/* === 4. ELEMENTS - Elementos HTML básicos === */
+@import '4-elements/_typography.css';
+@import '4-elements/_forms.css';
+@import '4-elements/_form-components.css';
+
+/* === 5. OBJECTS - Patrones de diseño, layouts === */
+@import '5-objects/_layout.css';
+@import '5-objects/_media.css';
+
+/* === 6. COMPONENTS - Componentes UI específicos === */
+@import '6-components/_neomorphic.css';
+@import '6-components/_buttons.css';
+@import '6-components/_cards.css';
+@import '6-components/_header.css';
+@import '6-components/_footer.css';
+
+/* === 7. PAGES - Estilos específicos de páginas === */
+@import '7-pages/_home.css';
+@import '7-pages/_servicios.css';
+@import '7-pages/_contactos.css';
+@import '7-pages/_reservas.css';
+@import '7-pages/_productos.css';
+
+/* === 8. UTILITIES - Utilidades, helpers, overrides === */
+@import '8-utilities/_responsive.css';
+@import '8-utilities/_animations.css';
+@import '8-utilities/_helpers.css';
+
+/* === CONFIGURACIÓN GLOBAL POST-IMPORTACIÓN === */
+
+/* Asegurar que el HTML use border-box */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* Configuración del body principal */
+body {
+  font-family: var(--font-secondary, 'Montserrat Alternates', sans-serif);
+  font-weight: var(--font-weight-regular, 400);
+  line-height: 1.6;
+  color: var(--neo-text-body, #3B1400);
+  background-color: var(--neo-bg, #FFEDE6);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Configuración para páginas específicas */
+body.page-template-page-servicios,
+body.page-id-servicios,
+body.post-type-archive-servicio {
+  height: 100vh;
+  overflow: hidden;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Configuración del contenedor principal */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg, 1.5rem);
+  width: 100%;
+}
+
+.container--fluid {
+  max-width: 100%;
+  padding: 0 var(--spacing-md, 1rem);
+}
+
+.container--narrow {
+  max-width: 800px;
+}
+
+.container--wide {
+  max-width: 1400px;
+}
+
+/* === CONFIGURACIÓN DE FOCUS GLOBAL === */
+:focus {
+  outline: 2px solid var(--neo-primary, #FF6C32);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--neo-primary, #FF6C32);
+  outline-offset: 2px;
+}
+
+/* === SELECCIÓN DE TEXTO === */
+::selection {
+  background-color: var(--neo-primary, #FF6C32);
+  color: white;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background-color: var(--neo-primary, #FF6C32);
+  color: white;
+  text-shadow: none;
+}
+
+/* === CONFIGURACIÓN DE SCROLL SUAVE === */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* === CONFIGURACIÓN DE SCROLLBAR GLOBAL === */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--neo-surface, #FFCDB9);
+  border-radius: var(--radius-full, 9999px);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neo-primary, #FF6C32);
+  border-radius: var(--radius-full, 9999px);
+  transition: var(--transition-fast, 0.2s ease);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neo-primary-hover, #D73D00);
+}
+
+/* === CONFIGURACIÓN DE IMÁGENES GLOBAL === */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* === CONFIGURACIÓN DE ENLACES GLOBAL === */
+a {
+  color: var(--neo-primary, #FF6C32);
+  text-decoration: none;
+  transition: var(--transition-normal, 0.3s ease);
+}
+
+a:hover,
+a:focus {
+  color: var(--neo-primary-hover, #D73D00);
+  text-decoration: underline;
+}
+
+/* === CONFIGURACIÓN DE BOTONES GLOBAL === */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  transition: var(--transition-normal, 0.3s ease);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* === CONFIGURACIÓN DE FORMULARIOS GLOBAL === */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* === CONFIGURACIÓN DE LISTAS === */
+ul,
+ol {
+  padding-left: var(--spacing-xl, 2rem);
+}
+
+li {
+  margin-bottom: var(--spacing-xs, 0.25rem);
+}
+
+/* === CONFIGURACIÓN DE TABLAS === */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  text-align: left;
+  padding: var(--spacing-sm, 0.5rem) var(--spacing-md, 1rem);
+}
+
+/* === UTILIDADES DE LAYOUT RÁPIDAS === */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* === CONFIGURACIÓN DE MODO OSCURO === */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --neo-bg: #1a1a1a;
+    --neo-surface: #2d2d2d;
+    --neo-text: #ffffff;
+    --neo-text-body: #e0e0e0;
+    --neo-shadow-light: #404040;
+    --neo-shadow-dark: #000000;
+  }
+}
+
+/* === CONFIGURACIÓN DE MOVIMIENTO REDUCIDO === */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* === CONFIGURACIÓN DE IMPRESIÓN === */
+@media print {
+
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* === CONFIGURACIÓN RESPONSIVE GLOBAL === */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--spacing-md, 1rem);
+  }
+
+  body {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--spacing-sm, 0.5rem);
+  }
+
+  body {
+    font-size: 0.85rem;
+  }
+}
+
+/* === DEBUG HELPERS (solo en desarrollo) === */
+.debug * {
+  outline: 1px solid red !important;
+}
+
+.debug-grid {
+  background-image:
+    linear-gradient(rgba(255, 0, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* === CONFIGURACIÓN DE PERFORMANCE === */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+.will-change-scroll {
+  will-change: scroll-position;
+}
+
+/* === CONFIGURACIÓN DE CONTENIDO GENERADO === */
+.has-icon::before,
+.has-icon::after {
+  font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+  font-weight: 900;
+  display: inline-block;
+  margin-right: var(--spacing-xs, 0.25rem);
+}
+
+/* === FIN DEL ARCHIVO PRINCIPAL === */

@@ -1,0 +1,530 @@
+/* ===== SERVICIOS.CSS - ESTILOS ESPECÍFICOS PARA PÁGINA DE SERVICIOS ===== */
+
+/* Importar variables y estilos base del tema */
+@import url('style.css');
+@import url('main.css');
+
+/* ===== VARIABLES ESPECÍFICAS PARA SERVICIOS ===== */
+:root {
+  /* Colores neomórficos - Extensión de la paleta principal */
+  --servicios-bg: #FFEDE6;
+  --servicios-surface: #FFCDB9;
+  --servicios-primary: #FF6C32;
+  --servicios-primary-hover: #D73D00;
+  --servicios-secondary: #FF8C5F;
+  --servicios-secondary-soft: #FFAC8C;
+  --servicios-text: #240A00;
+  --servicios-text-body: #3B1400;
+  --servicios-text-primary: #FFEDE6;
+  --servicios-text-secondary: #7D2400;
+  --servicios-shadow-accent: #AA3000;
+  --servicios-overlay: #FFE5D8;
+  --servicios-shadow-light: #FFE5D8;
+  --servicios-shadow-dark: #AA3000;
+
+  /* Sombras neomórficas específicas para servicios */
+  --servicios-shadow-inset-light: inset 5px 5px 10px #a3b1c6, inset -5px -5px 10px #ffffff;
+  --servicios-shadow-outset: 5px 5px 10px #a3b1c6, -5px -5px 10px #ffffff;
+  --servicios-shadow-pressed: inset 3px 3px 6px #a3b1c6, inset -3px -3px 6px #ffffff;
+  --servicios-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --servicios-shadow-card-hover: 0 12px 40px rgba(0, 0, 0, 0.4);
+
+  /* Transiciones */
+  --servicios-transition: all 0.3s ease;
+  --servicios-flip-transition: transform 0.8s;
+}
+
+/* ===== SCROLL PERSONALIZADO PARA SERVICIOS ===== */
+.hero-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+.hero-section::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.hero-section::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.hero-section::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* ===== RESET ESPECÍFICO PARA PÁGINA DE SERVICIOS ===== */
+body.page-template-page-servicios,
+body.page-id-servicios,
+body.post-type-archive-servicio {
+  background: var(--servicios-bg) !important;
+  color: var(--servicios-text) !important;
+  font-family: 'Montserrat Alternates', sans-serif !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+}
+
+/* Override para containers en página de servicios */
+body.page-template-page-servicios .container,
+body.page-template-page-servicios .site-main,
+body.page-template-page-servicios .entry-content,
+body.page-id-servicios .container,
+body.page-id-servicios .site-main,
+body.page-id-servicios .entry-content,
+body.post-type-archive-servicio .container,
+body.post-type-archive-servicio .site-main,
+body.post-type-archive-servicio .entry-content {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+}
+
+/* ===== SECCIÓN HERO DE SERVICIOS ===== */
+.hero-section {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  position: relative;
+  color: white;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+}
+
+/* .hero-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(170, 48, 0, 0.85), rgba(255, 108, 50, 0.75));
+  backdrop-filter: blur(2px);
+  z-index: 0;
+  pointer-events: none;
+} */
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.cards-container {
+  position: relative;
+  z-index: 1;
+  padding: 1.25rem 3rem;
+  max-width: 90rem;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Título principal de servicios */
+.servicios-title,
+.cards-container h1,
+.hero-section h1,
+.page-template-page-servicios h1,
+.page-id-servicios h1,
+.post-type-archive-servicio h1 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  text-shadow: 0.125rem 0.125rem 0.5rem rgba(0, 0, 0, 0.8);
+  color: white !important;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  letter-spacing: -0.02em;
+}
+
+/* ===== GRID DE SERVICIOS ===== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(23.5rem, 1fr));
+  gap: 2rem;
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+/* ===== FLIP CARDS DE SERVICIOS ===== */
+.service-card {
+  perspective: 62.5rem;
+  cursor: pointer;
+  height: 25rem;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+.service-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: var(--servicios-flip-transition);
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+  /* Estado inicial explícito */
+}
+
+.service-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* ===== CARA FRONTAL DE LA TARJETA ===== */
+.flip-card-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background-image: url('../images/fonde-header.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: var(--servicios-shadow-card);
+  backdrop-filter: blur(15px);
+  color: var(--servicios-text);
+  display: flex;
+  flex-direction: column;
+  transition: var(--servicios-transition);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: rotateY(0deg);
+  /* Forzar estado inicial */
+  z-index: 2;
+  /* Asegurar que esté por encima */
+}
+
+.flip-card-front:hover {
+  box-shadow: var(--servicios-shadow-card-hover);
+  transform: translateY(-4px);
+}
+
+.service-thumb {
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.service-thumb img {
+  width: 100%;
+  height: 12.5rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.service-title {
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+  color: var(--servicios-text);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+
+.service-excerpt {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  flex-grow: 1;
+  overflow: hidden;
+  color: var(--servicios-text-body);
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 400;
+}
+
+.service-hint {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--servicios-text-secondary);
+  font-style: italic;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+}
+
+/* ===== CARA TRASERA DE LA TARJETA ===== */
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background: linear-gradient(135deg, var(--servicios-shadow-accent), var(--servicios-primary));
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: var(--servicios-shadow-card);
+  backdrop-filter: blur(15px);
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1;
+  /* Detrás de la cara frontal */
+}
+
+.service-back-title {
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  line-height: 1.2;
+}
+
+/* Información de precio */
+.service-price-info {
+  margin-bottom: 2.5rem;
+}
+
+.service-price-label {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+}
+
+.service-price-amount {
+  font-size: 3rem;
+  font-weight: 100;
+  line-height: 1;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Información de duración */
+.service-duration-info {
+  margin-bottom: 2.5rem;
+}
+
+.service-duration-label {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+}
+
+.service-duration-amount {
+  font-size: 1.8rem;
+  font-weight: 100;
+  line-height: 1;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Mensaje cuando no hay información */
+.service-no-info {
+  margin-bottom: 2rem;
+  opacity: 0.8;
+  font-style: italic;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  line-height: 1.4;
+}
+
+.service-no-info div:first-child {
+  margin-bottom: 0.5rem;
+}
+
+/* Indicador de volver */
+.service-back-hint {
+  margin-top: auto;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  font-style: italic;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+}
+
+/* ===== ESTILOS PARA MENSAJES ===== */
+.servicios-message {
+  text-align: center;
+  padding: 2rem;
+  color: var(--servicios-text);
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.servicios-message p {
+  margin-bottom: 1rem;
+}
+
+/* ===== DEBUG STYLES (solo para administradores) ===== */
+.mm-debug-badge {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  z-index: 9999;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  line-height: 1.4;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .cards-container {
+    padding: 3rem 1rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 100%;
+  }
+
+  .service-card {
+    height: 22rem;
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    padding: 1.25rem;
+  }
+
+  .service-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .service-excerpt {
+    font-size: 0.85rem;
+  }
+
+  .service-thumb img {
+    height: 10rem;
+  }
+
+  .service-price-amount {
+    font-size: 2.5rem;
+  }
+
+  .service-duration-amount {
+    font-size: 1.5rem;
+  }
+
+  .service-back-title {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards-container {
+    padding: 2rem 0.75rem;
+  }
+
+  .service-card {
+    height: 20rem;
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    padding: 1rem;
+  }
+
+  .service-title {
+    font-size: 1rem;
+  }
+
+  .service-excerpt {
+    font-size: 0.8rem;
+  }
+
+  .service-thumb img {
+    height: 8rem;
+  }
+
+  .service-price-amount {
+    font-size: 2rem;
+  }
+
+  .service-duration-amount {
+    font-size: 1.3rem;
+  }
+}
+
+/* ===== ANIMACIONES ADICIONALES ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.service-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.service-card:nth-child(even) {
+  animation-delay: 0.1s;
+}
+
+.service-card:nth-child(3n) {
+  animation-delay: 0.2s;
+}
+
+/* ===== MEJORAS DE ACCESIBILIDAD ===== */
+.service-card:focus,
+.service-card:focus-visible {
+  outline: 2px solid var(--servicios-primary);
+  outline-offset: 4px;
+}
+
+.service-card:hover {
+  cursor: pointer;
+}
+
+/* ===== UTILIDADES ADICIONALES ===== */
+.text-center {
+  text-align: center !important;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.mt-auto {
+  margin-top: auto !important;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+.h-100 {
+  height: 100% !important;
+}
+

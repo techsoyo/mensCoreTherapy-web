@@ -1,0 +1,182 @@
+/* ===== CONTACTOS PAGE STYLES ===== */
+
+/* Page-specific resets */
+body.page-template-page-contactos main#primary,
+body.page-id-contactos main#primary {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+/* Hero section with background image */
+.page-contactos-hero {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 !important;
+  padding: 4rem 1rem 1rem 1rem;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Overlay for better form readability */
+.page-contactos-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg,
+      rgba(255, 108, 50, 0.08) 0%,
+      rgba(255, 237, 230, 0.25) 50%,
+      rgba(170, 48, 0, 0.15) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Contact section */
+.page-contactos-hero .mm-contactos {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 700px;
+  margin: -100px auto 2rem !important;
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/* Container adjustments */
+.page-contactos-hero .mm-contactos .container {
+  backdrop-filter: blur(10px);
+  padding: 3rem 2.5rem !important;
+  margin: 0 !important;
+  border-radius: 1.5rem !important;
+  box-shadow:
+    0 20px 60px rgba(36, 10, 0, 0.15),
+    0 0 0 1px rgba(255, 108, 50, 0.1) inset,
+    5px 5px 15px rgba(170, 48, 0, 0.1),
+    -5px -5px 15px rgba(255, 255, 255, 0.5) !important;
+  transition: var(--transition-normal);
+}
+
+.page-contactos-hero .mm-contactos .container:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 25px 70px rgba(36, 10, 0, 0.2),
+    0 0 0 1px rgba(255, 108, 50, 0.15) inset,
+    8px 8px 20px rgba(170, 48, 0, 0.15),
+    -8px -8px 20px rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Title */
+.page-contactos-hero .mm-contactos h1 {
+  color: var(--neo-text);
+  font-family: var(--font-secondary);
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+  margin-bottom: 2rem;
+  text-shadow:
+    2px 2px 4px rgba(255, 255, 255, 0.8),
+    -1px -1px 2px rgba(170, 48, 0, 0.1);
+  letter-spacing: -0.5px;
+}
+
+/* Header/footer positioning fix */
+body.page-template-page-contactos #site-header,
+body.page-id-contactos #site-header {
+  position: relative;
+  z-index: 100;
+}
+
+.page-contactos-hero {
+  margin-top: -1rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-contactos-hero .mm-contactos .container {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.mm-form .form-row {
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.mm-form .form-row:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.mm-form .form-row:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.mm-form .form-row:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.mm-form .form-actions {
+  animation: fadeInUp 0.6s ease-out;
+  animation-delay: 0.4s;
+  animation-fill-mode: both;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-contactos-hero {
+    min-height: auto;
+    padding: 1rem 0.5rem;
+  }
+
+  .page-contactos-hero .mm-contactos {
+    margin: -100px auto 1rem !important;
+  }
+
+  .page-contactos-hero .mm-contactos .container {
+    padding: 2rem 1.5rem !important;
+    border-radius: 1rem !important;
+  }
+
+  .page-contactos-hero .mm-contactos h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-contactos-hero .mm-contactos {
+    margin: -50px auto 0.5rem !important;
+  }
+
+  .page-contactos-hero .mm-contactos .container {
+    padding: 1.5rem 1rem !important;
+  }
+
+  .page-contactos-hero .mm-contactos h1 {
+    font-size: 1.75rem;
+  }
+}

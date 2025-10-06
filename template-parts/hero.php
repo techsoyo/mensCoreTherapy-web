@@ -1,12 +1,13 @@
 <?php
 if (!defined('ABSPATH')) exit;
-$args = wp_parse_args($args ?? [], ['video_url' => '']);
+$args = wp_parse_args($args ?? [], ['bg_image' => '']);
 $ci = mm_get_contact_info();
+
+// Usar hoem.jpg como imagen de fondo por defecto
+$bg_image = !empty($args['bg_image']) ? $args['bg_image'] : get_template_directory_uri() . '/assets/images/hoem.webp';
 ?>
-<section class="mm-hero" aria-label="<?php esc_attr_e('Héroe principal','masajista-masculino'); ?>">
-  <?php if (!empty($args['video_url'])): ?>
-    <video class="mm-hero__video" src="<?php echo esc_url($args['video_url']); ?>" autoplay muted loop playsinline></video>
-  <?php endif; ?>
+<section class="mm-hero" aria-label="<?php esc_attr_e('Héroe principal','masajista-masculino'); ?>" style="background-image: url('<?php echo esc_url($bg_image); ?>');">
+  <!-- Video ya no se usa, ahora es imagen de fondo -->
 
   <div class="mm-hero__overlay">
    <div class="mm-hero__content montserrat-alternates-regular">

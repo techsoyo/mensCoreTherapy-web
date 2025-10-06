@@ -41,12 +41,12 @@
 
     <!-- Columna 1: Logo -->
     <div style="display: flex; align-items: center; justify-content: start; width: 100%;">
-  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-sin-fondo.png" alt="Logo" style="max-height: 4rem; width: auto; filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.5));">
+  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-sin-fondo.webp" alt="Logo" style="max-height: 4rem; width: auto; filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.5));">
     </div>
 
     <!-- Columna 2: Botones WhatsApp y Email (h4 encima de botones) -->
     <div style="display: flex; flex-direction: column; gap: 0.24rem; align-items: center; justify-content: center; width: 100%;">
-      <h4 style="margin:0; font-size:0.81rem; color:var(--neo-text-primary);">Reservar</h4>
+      <h4 style="margin:0; font-size:0.81rem; color:#FFEDE6; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Reservar</h4>
       <div style="display:flex; gap:0.38rem; justify-content:center; align-items:center; width:100%;">
         <a href="#" class="neo-button" style="
           color: #240A00;
@@ -85,10 +85,10 @@
     <div style="display:flex; flex-direction:column; align-items:flex-end; justify-content:center; width:100%; text-align:right; justify-self:end;">
       
 
-      <div style="display:flex; gap:0.8rem; justify-content:flex-end; width:100%; max-width:22rem; color:var(--neo-text-secondary); font-size:0.677rem; line-height:1.2;">
+      <div style="display:flex; gap:0.8rem; justify-content:flex-end; width:100%; max-width:22rem; color:#FFEDE6; font-size:0.677rem; line-height:1.2; text-shadow: 1px 1px 3px rgba(0,0,0,0.7);">
         <!-- Caja 1: h4 -->
         <div style="flex:0 0 auto; text-align:left;">
-          <h4 style="margin:0; font-size:0.78rem; color:var(--neo-text-primary);">Contacto</h4>
+          <h4 style="margin:0; font-size:0.78rem; color:#FFEDE6; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Contacto</h4>
         </div>
 
         <!-- Caja 2: teléfono y email (alineados a la izquierda) -->
@@ -109,13 +109,14 @@
 
   <!-- Copyright ultra-compacto -->
   <div style="
-    border-top: 1px solid var(--neo-accent);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
     padding: 1px 0;
     text-align: center;
-    color: var(--neo-text-secondary);
+    color: #FFEDE6;
     font-size: 0.55rem;
-    background: var(--neo-overlay);
+    background: rgba(170, 48, 0, 0.2);
     margin: 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
   "></div>
 </footer>
 

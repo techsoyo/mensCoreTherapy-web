@@ -1,0 +1,120 @@
+/* ===== LAYOUT OBJECTS ===== */
+
+/* Container base */
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  background: var(--neo-bg);
+  border-radius: 1.25rem;
+  box-shadow: var(--neo-shadow-outset);
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Site main content */
+.site-main {
+  background: var(--neo-bg);
+  border-radius: 1.25rem;
+  box-shadow: var(--neo-shadow-outset);
+  padding: var(--spacing-xl);
+  margin: var(--spacing-lg) auto;
+  max-width: var(--container-max-width);
+}
+
+/* Entry content */
+.entry-content {
+  background: var(--neo-bg);
+  border-radius: 1.25rem;
+  box-shadow: var(--neo-shadow-outset);
+  padding: var(--spacing-xl);
+  margin: var(--spacing-lg) auto;
+  max-width: var(--container-max-width);
+}
+
+/* Grid system */
+.mm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-xl);
+}
+
+/* Services grid specific */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(23.5rem, 1fr));
+  gap: var(--spacing-xl);
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+/* Productos grid */
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: var(--spacing-lg);
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Page wrap */
+.page-wrap {
+  padding: 100vh 0 40px;
+}
+
+/* Home after hero */
+.home-after-hero {
+  background: #fff;
+  color: #111;
+  padding: 40px 0;
+}
+
+/* WordPress blocks */
+.wp-block {
+  background: var(--neo-bg);
+  border-radius: 1rem;
+  box-shadow: var(--neo-shadow-outset);
+  padding: var(--spacing-lg);
+  margin: var(--spacing-md) 0;
+}
+
+/* Responsive layout adjustments */
+@media (max-width: 1024px) {
+  .productos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+
+  .container,
+  .site-main,
+  .entry-content {
+    padding: var(--spacing-lg);
+    margin: var(--spacing-sm) auto;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .productos-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .container,
+  .site-main,
+  .entry-content {
+    padding: var(--spacing-md);
+    margin: var(--spacing-xs) auto;
+  }
+}

@@ -1,0 +1,35 @@
+/* Importar variables */
+@import '../1-settings/_variables.css';
+
+/* === JERARQUÍA TIPOGRÁFICA UNIFICADA === */
+h1,
+.h1 {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-thin);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  color: var(--neo-text);
+}
+
+h2,
+.h2 {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-thin);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+  color: var(--neo-text);
+}
+
+/* ... resto de headings ... */
+
+p {
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-regular);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: var(--neo-text-body);
+}

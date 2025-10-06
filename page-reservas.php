@@ -2,19 +2,26 @@
 
 /**
  * Template Name: Reservas
+ * Description: Página de reservas con imagen de fondo y formulario neomórfico
  */
 
 get_header();
-get_template_part('template-parts/reservas');
+
+// Definir imagen de fondo para la página de reservas
+$bg_image = get_template_directory_uri() .
+  '/assets/images/reservas.webp';
 ?>
-<?php
-$bg = get_template_directory_uri() . '/assets/images/reservas.webp';
-?>
-<main class="page-reservas-hero" style="background-image: url('<?php echo esc_url($bg); ?>'); background-size: cover; background-position: center;">
-  <section class="page-wrap">
-    <div class="container">
-      <?php while (have_posts()) { the_post(); the_content(); } ?>
-    </div>
-  </section>
+
+<main class="page-reservas-hero" style="
+  background-image: url('<?php echo esc_url($bg_image); ?>');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+">
+  <?php
+  // Incluir el template part del formulario de reservas
+  get_template_part('template-parts/reservas');
+  ?>
 </main>
+
 <?php get_footer(); ?>

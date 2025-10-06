@@ -1,0 +1,252 @@
+/* ===== FORM COMPONENTS ===== */
+
+/* Base form styles */
+.mm-form {
+  max-width: 60%;
+  margin: 0;
+  font-family: var(--font-secondary);
+}
+
+.mm-form .form-row {
+  margin-bottom: 14px;
+}
+
+.mm-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+}
+
+/* Neo form styles */
+.neo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.neo-form .form-row {
+  width: 100%;
+  margin: 0;
+}
+
+.neo-form .form-row.single {
+  flex-direction: column;
+}
+
+.neo-form .form-row.double {
+  display: flex;
+  flex-direction: row;
+  gap: 0.35rem;
+}
+
+.neo-form .form-row.double>div {
+  flex: 1;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Input styles */
+.mm-form input[type="text"]:not(.neo-input),
+.mm-form input[type="email"]:not(.neo-input),
+.mm-form textarea:not(.neo-input) {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font: inherit;
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-regular);
+  font-size: 1rem;
+}
+
+/* Neo inputs */
+.neo-input {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 237, 230, 0.8);
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow: var(--neo-shadow-inset);
+  color: var(--neo-text);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  transition: var(--transition-normal);
+  outline: none;
+}
+
+.neo-input::placeholder {
+  color: var(--neo-text-secondary);
+  opacity: 0.7;
+}
+
+.neo-input:focus {
+  box-shadow:
+    inset 5px 5px 10px rgba(170, 48, 0, 0.2),
+    inset -5px -5px 10px rgba(255, 255, 255, 1),
+    0 0 0 3px rgba(255, 108, 50, 0.1);
+  background: rgba(255, 237, 230, 0.95);
+}
+
+.neo-input:focus-visible {
+  outline: 3px solid var(--neo-primary);
+  outline-offset: 2px;
+}
+
+/* Textarea specific */
+textarea.neo-input {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* Date and time inputs */
+input[type="date"].neo-input,
+input[type="time"].neo-input {
+  color: var(--neo-text);
+  cursor: pointer;
+}
+
+input[type="date"].neo-input::-webkit-calendar-picker-indicator,
+input[type="time"].neo-input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity var(--transition-normal);
+}
+
+input[type="date"].neo-input::-webkit-calendar-picker-indicator:hover,
+input[type="time"].neo-input::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+/* Form actions */
+.mm-form .form-actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+/* Form notices */
+.mm-notice {
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  box-shadow:
+    3px 3px 8px rgba(0, 0, 0, 0.1),
+    -3px -3px 8px rgba(255, 255, 255, 0.5);
+}
+
+.mm-notice.success {
+  background: rgba(76, 175, 80, 0.15);
+  color: #1b5e20;
+  border-left: 4px solid #4caf50;
+}
+
+.mm-notice.error {
+  background: rgba(244, 67, 54, 0.15);
+  color: #b71c1c;
+  border-left: 4px solid #f44336;
+}
+
+.mm-notice ul {
+  margin: 0.5rem 0 0 1.5rem;
+  padding: 0;
+}
+
+.mm-notice li {
+  margin: 0.25rem 0;
+}
+
+/* Contactos specific form styles */
+.page-contactos-hero .mm-form.neo-form {
+  gap: 0.2rem;
+  width: 500px !important;
+}
+
+.page-contactos-hero .neo-input {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+}
+
+/* Reservas specific form styles */
+.page-reservas-hero .mm-form.neo-form {
+  gap: 0.2rem;
+  width: 500px !important;
+}
+
+.page-reservas-hero .neo-input {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+}
+
+/* Responsive forms */
+@media (max-width: 768px) {
+  .mm-form {
+    max-width: 95%;
+  }
+
+  .neo-form .form-row.double {
+    flex-direction: column;
+  }
+
+  .page-contactos-hero .mm-form.neo-form,
+  .page-reservas-hero .mm-form.neo-form {
+    width: 100% !important;
+  }
+
+  .neo-input {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  textarea.neo-input {
+    min-height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .neo-input {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Tables */
+.mm-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mm-table th,
+.mm-table td {
+  border: 1px solid #eee;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.mm-table thead th {
+  background: #fafafa;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-thin);
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+}
+
+.mm-table td {
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-regular);
+  font-size: 0.9rem;
+}

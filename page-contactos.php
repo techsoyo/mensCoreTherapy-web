@@ -2,15 +2,33 @@
 
 /**
  * Template Name: Contactos
+ * Description: Página de contacto con imagen de fondo y formulario flotante
  */
+
+if (!defined('ABSPATH')) exit;
+
 get_header();
 ?>
-<main id="primary" role="main">
+
+<main id="primary" role="main" style="margin: 0; padding: 0;">
   <?php
-  $bg = get_template_directory_uri() . '/assets/images/contact.webp';
+  // URL de la imagen de fondo
+  $bg_image = get_template_directory_uri() . '/assets/images/contact.webp';
   ?>
-  <div class="page-contactos-hero" style="background-image: url('<?php echo esc_url($bg); ?>'); background-size: cover; background-position: center;">
-    <?php get_template_part('template-parts/contactos'); ?>
+
+  <div class="page-contactos-hero" style="
+    background-image: url('<?php echo esc_url($bg_image); ?>');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  ">
+    <?php
+    // Incluir el template part del formulario de contacto
+    get_template_part('template-parts/contactos');
+    ?>
   </div>
 </main>
-<?php get_footer(); ?>
+
+<?php
+get_footer();
+?>

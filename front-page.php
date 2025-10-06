@@ -4,7 +4,7 @@
 <main id="primary" class="site-main">
   <?php
 get_template_part('template-parts/hero', null, [
-  // 'video_url' => get_stylesheet_directory_uri() . '/assets/images/video.mp4'
+  // 'bg_image' => get_template_directory_uri() . '/assets/images/hoem.jpg' // Ya está como default
 ]);
 ?>
   <section class="home-after-hero container">

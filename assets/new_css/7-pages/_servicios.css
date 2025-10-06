@@ -1,0 +1,200 @@
+/* ===== SERVICIOS PAGE STYLES ===== */
+
+/* Page-specific resets */
+body.page-template-page-servicios,
+body.page-id-servicios,
+body.post-type-archive-servicio {
+  background: var(--neo-bg) !important;
+  color: var(--neo-text) !important;
+  font-family: var(--font-secondary) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+}
+
+/* Container overrides */
+body.page-template-page-servicios .container,
+body.page-template-page-servicios .site-main,
+body.page-template-page-servicios .entry-content,
+body.page-id-servicios .container,
+body.page-id-servicios .site-main,
+body.page-id-servicios .entry-content,
+body.post-type-archive-servicio .container,
+body.post-type-archive-servicio .site-main,
+body.post-type-archive-servicio .entry-content {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+}
+
+/* Hero section */
+.hero-section {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  position: relative;
+  color: white;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+}
+
+/* Custom scrollbar for hero section */
+.hero-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+.hero-section::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.hero-section::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.hero-section::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Cards container */
+.cards-container {
+  position: relative;
+  z-index: 1;
+  padding: 1.25rem 3rem;
+  max-width: 90rem;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Main title */
+.servicios-title,
+.cards-container h1,
+.hero-section h1,
+.page-template-page-servicios h1,
+.page-id-servicios h1,
+.post-type-archive-servicio h1 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  text-shadow: 0.125rem 0.125rem 0.5rem rgba(0, 0, 0, 0.8);
+  color: white !important;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-thin);
+  letter-spacing: -0.02em;
+}
+
+/* Services message */
+.servicios-message {
+  text-align: center;
+  padding: 2rem;
+  color: var(--neo-text);
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-regular);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.servicios-message p {
+  margin-bottom: 1rem;
+}
+
+/* Debug badge (admin only) */
+.mm-debug-badge {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  z-index: 9999;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-thin);
+  line-height: 1.4;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.service-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.service-card:nth-child(even) {
+  animation-delay: 0.1s;
+}
+
+.service-card:nth-child(3n) {
+  animation-delay: 0.2s;
+}
+
+/* Focus styles for accessibility */
+.service-card:focus,
+.service-card:focus-visible {
+  outline: 2px solid var(--neo-primary);
+  outline-offset: 4px;
+}
+
+.service-card:hover {
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cards-container {
+    padding: 3rem 1rem;
+  }
+
+  .hero-section {
+    background-attachment: scroll !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards-container {
+    padding: 2rem 0.75rem;
+  }
+}
+
+/* Utility classes */
+.text-center {
+  text-align: center !important;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.mt-auto {
+  margin-top: auto !important;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+.h-100 {
+  height: 100% !important;
+}

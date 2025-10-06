@@ -1,0 +1,403 @@
+/**
+ * Estilos específicos para la página de Reservas
+ * Archivo: assets/css/reservas.css
+ * Tema: Masajista Masculino
+ * Estilo: Neomórfico
+ */
+
+/* ===== RESET DE ESTILOS WORDPRESS PARA RESERVAS ===== */
+
+/* Resetear márgenes y paddings de WordPress para la página de reservas */
+body.page-template-page-reservas main#primary,
+body.page-id-reservas main#primary {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ===== SECCIÓN HERO DE RESERVAS ===== */
+
+.page-reservas-hero {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  display: flex;
+  align-items: flex-start;
+  /* Cambiar de center a flex-start para que empiece desde arriba */
+  justify-content: flex-end;
+  /* Alinear a la derecha */
+  margin: 0 !important;
+  padding: 1rem 3rem 2rem 1rem;
+  /* Aumentar padding-top para separar del header */
+  /* Reducir padding vertical para dar más espacio al formulario */
+  overflow-y: auto;
+  /* Permitir scroll vertical si es necesario */
+  overflow-x: hidden;
+  /* Mantener scroll horizontal oculto */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Overlay para mejorar legibilidad del formulario */
+.page-reservas-hero::before {
+  content:
+    position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg,
+      rgba(255, 108, 50, 0.08) 0%,
+      rgba(255, 237, 230, 0.25) 50%,
+      rgba(170, 48, 0, 0.15) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ===== SECCIÓN DE RESERVAS (igual que contactos) ===== */
+
+.page-reservas-hero .mm-reservas {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 0 2rem auto !important;
+  /* Usar 'auto' en margin-left para empujar a la derecha */
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/* Ajuste del contenedor interno (más compacto para más campos) */
+.page-reservas-hero .mm-reservas .container {
+  /* background: rgba(255, 237, 230, 0.97) !important; */
+  backdrop-filter: blur(10px);
+  padding: 2rem 2rem !important;
+  /* Reducir padding para dar más espacio */
+  margin: 0 !important;
+  border-radius: 1.5rem !important;
+  width: 70% !important;
+  /* Anchura específica del contenedor */
+  box-shadow:
+    0 20px 60px rgba(36, 10, 0, 0.15),
+    0 0 0 1px rgba(255, 108, 50, 0.1) inset,
+    5px 5px 15px rgba(170, 48, 0, 0.1),
+    -5px -5px 15px rgba(255, 255, 255, 0.5) !important;
+  transition: all 0.3s ease;
+}
+
+/* Efecto hover sutil en el contenedor (igual que contactos) */
+.page-reservas-hero .mm-reservas .container:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 25px 70px rgba(36, 10, 0, 0.2),
+    0 0 0 1px rgba(255, 108, 50, 0.15) inset,
+    8px 8px 20px rgba(170, 48, 0, 0.15),
+    -8px -8px 20px rgba(255, 255, 255, 0.6) !important;
+}
+
+/* ===== TÍTULO (más compacto para dar espacio) ===== */
+
+.page-reservas-hero .mm-reservas h2 {
+  color: var(--neo-text);
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 2.2rem;
+  /* Ligeramente más pequeño */
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  /* Reducir margen inferior */
+  text-shadow:
+    2px 2px 4px rgba(255, 255, 255, 0.8),
+    -1px -1px 2px rgba(170, 48, 0, 0.1);
+  letter-spacing: -0.5px;
+}
+
+/* ===== FORMULARIO (igual estructura que contactos con flexbox) ===== */
+
+.page-reservas-hero .mm-form.neo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  /* Espacio entre filas de campos */
+  width: 500px !important;
+  /* Ancho fijo independiente del contenedor */
+}
+
+/* Filas de campos del formulario (flexbox en lugar de grid) */
+.page-reservas-hero .form-row {
+  display: flex;
+  gap: 0.35rem;
+  /* Espacio horizontal entre campos en la misma fila */
+  width: 100%;
+}
+
+.page-reservas-hero .form-row.single {
+  flex-direction: column;
+}
+
+.page-reservas-hero .form-row.double {
+  flex-direction: row;
+}
+
+.page-reservas-hero .form-row.double>div {
+  flex: 1;
+}
+
+/* Grupos de campos */
+.page-reservas-hero .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-reservas-hero .neo-input {
+  width: 100%;
+  padding: 0.6rem 1.2rem;
+  /* Reducir padding para compactar */
+  background: rgba(255, 237, 230, 0.8);
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow:
+    inset 4px 4px 8px rgba(170, 48, 0, 0.15),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+  color: var(--neo-text);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  /* Ligeramente más pequeño */
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.page-reservas-hero .neo-input::placeholder {
+  color: var(--neo-text-secondary);
+  opacity: 0.7;
+}
+
+.page-reservas-hero .neo-input:focus {
+  box-shadow:
+    inset 5px 5px 10px rgba(170, 48, 0, 0.2),
+    inset -5px -5px 10px rgba(255, 255, 255, 1),
+    0 0 0 3px rgba(255, 108, 50, 0.1);
+  background: rgba(255, 237, 230, 0.95);
+}
+
+/* Inputs de fecha y hora - estilos especiales */
+.page-reservas-hero input[type="date"].neo-input,
+.page-reservas-hero input[type="time"].neo-input {
+  color: var(--neo-text-primary);
+  cursor: pointer;
+}
+
+.page-reservas-hero input[type="date"].neo-input::-webkit-calendar-picker-indicator,
+.page-reservas-hero input[type="time"].neo-input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.page-reservas-hero input[type="date"].neo-input::-webkit-calendar-picker-indicator:hover,
+.page-reservas-hero input[type="time"].neo-input::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+/* Textarea específico */
+.page-reservas-hero textarea.neo-input {
+  min-height: 120px;
+  resize: vertical;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+}
+
+/* ===== BOTÓN DE ENVÍO (igual que contactos) ===== */
+
+.page-reservas-hero .form-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.page-reservas-hero .neo-button {
+  background: linear-gradient(145deg, #FF6C32, #D73D00);
+  color: #FFEDE6;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 0.75rem;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow:
+    5px 5px 15px rgba(170, 48, 0, 0.3),
+    -5px -5px 15px rgba(255, 255, 255, 0.1),
+    inset 0 -2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.page-reservas-hero .neo-button:hover {
+  background: linear-gradient(145deg, #FF8C5F, #FF6C32);
+  transform: translateY(-3px);
+  box-shadow:
+    7px 7px 20px rgba(170, 48, 0, 0.4),
+    -7px -7px 20px rgba(255, 255, 255, 0.15),
+    inset 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.page-reservas-hero .neo-button:active {
+  transform: translateY(-1px);
+  box-shadow:
+    3px 3px 10px rgba(170, 48, 0, 0.3),
+    -3px -3px 10px rgba(255, 255, 255, 0.1),
+    inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== MENSAJES DE NOTIFICACIÓN ===== */
+
+.mm-notice {
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  margin-bottom: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  box-shadow:
+    3px 3px 8px rgba(0, 0, 0, 0.1),
+    -3px -3px 8px rgba(255, 255, 255, 0.5);
+}
+
+.mm-notice.success {
+  background: rgba(76, 175, 80, 0.15);
+  color: #1b5e20;
+  border-left: 4px solid #4caf50;
+}
+
+.mm-notice.error {
+  background: rgba(244, 67, 54, 0.15);
+  color: #b71c1c;
+  border-left: 4px solid #f44336;
+}
+
+.mm-notice ul {
+  margin: 0.5rem 0 0 1.5rem;
+  padding: 0;
+}
+
+.mm-notice li {
+  margin: 0.25rem 0;
+}
+
+/* ===== RESPONSIVE DESIGN (igual que contactos) ===== */
+
+@media (max-width: 768px) {
+  .page-reservas-hero .mm-reservas {
+    max-width: 95%;
+    padding: 2rem 1.5rem;
+  }
+
+  .page-reservas-hero .form-row.double {
+    flex-direction: column;
+  }
+
+  .page-reservas-hero .mm-reservas h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .page-reservas-hero .neo-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-reservas-hero .mm-reservas {
+    padding: 1.5rem 1rem;
+  }
+
+  .page-reservas-hero .mm-reservas h2 {
+    font-size: 1.8rem;
+  }
+
+  .page-reservas-hero .neo-input {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .page-reservas-hero .neo-button {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* ===== EFECTOS ADICIONALES ===== */
+
+/* Animación de entrada para el formulario */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-reservas-hero .mm-reservas .container {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.page-reservas-hero .form-row {
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.page-reservas-hero .form-row:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.page-reservas-hero .form-row:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.page-reservas-hero .form-row:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.page-reservas-hero .form-row:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.page-reservas-hero .form-actions {
+  animation: fadeInUp 0.6s ease-out;
+  animation-delay: 0.5s;
+  animation-fill-mode: both;
+}
+
+/* ===== ACCESIBILIDAD ===== */
+
+.page-reservas-hero .neo-input:focus-visible {
+  outline: 3px solid var(--neo-primary);
+  outline-offset: 2px;
+}
+
+.page-reservas-hero .neo-button:focus-visible {
+  outline: 3px solid #FFEDE6;
+  outline-offset: 3px;
+}
+
+/* Screen reader only */
+.screen-reader-text {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+

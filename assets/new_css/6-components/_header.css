@@ -1,0 +1,246 @@
+/* ===== HEADER COMPONENT ===== */
+
+.mm-header,
+.neo-header {
+  /* Estructura y posicionamiento */
+  color: var(--neo-text-primary) !important;
+  margin: 0 !important;
+  padding: 0.15rem 0 !important;
+  border-radius: 0 0 20px 20px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+  overflow: visible !important;
+
+  /* Header fijo */
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 40px !important;
+  max-height: 60px !important;
+  display: block !important;
+  visibility: visible !important;
+  z-index: 9999 !important;
+
+  /* Background se define inline en header.php */
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+/* Overlay del header */
+.mm-header__overlay {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(170, 48, 0, 0.25) !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Contenedor interno */
+.mm-header__inner {
+  position: relative !important;
+  z-index: 10 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 0 1rem !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  height: 100% !important;
+  min-height: inherit !important;
+  visibility: visible !important;
+}
+
+/* Logo */
+.mm-logo,
+.mm-header__logo {
+  flex-shrink: 0 !important;
+  display: block !important;
+  visibility: visible !important;
+  z-index: 11 !important;
+}
+
+.mm-logo a,
+.mm-header__logo a {
+  display: block !important;
+  line-height: 0 !important;
+  visibility: visible !important;
+}
+
+.mm-logo img,
+.mm-logo-img {
+  max-height: 5.64rem !important;
+  width: auto !important;
+  height: auto !important;
+  display: block !important;
+  transition: transform var(--transition-normal);
+}
+
+.mm-logo a:hover img {
+  transform: scale(1.05);
+}
+
+/* Navegación */
+#site-navigation,
+.mm-header__nav {
+  flex: 1 !important;
+  display: flex !important;
+  justify-content: center !important;
+  visibility: visible !important;
+  z-index: 11 !important;
+}
+
+.mm-menu {
+  display: flex !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 1.5rem !important;
+  align-items: center !important;
+  visibility: visible !important;
+  z-index: 12 !important;
+}
+
+.mm-menu li {
+  margin: 0;
+  padding: 0;
+}
+
+.mm-menu a {
+  color: var(--neo-text-primary) !important;
+  text-decoration: none !important;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium) !important;
+  font-size: 0.95rem !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 0.5rem !important;
+  transition: var(--transition-normal) !important;
+  position: relative !important;
+  display: block !important;
+  visibility: visible !important;
+  z-index: 13 !important;
+  letter-spacing: 0.4px;
+}
+
+.mm-menu a:hover,
+.mm-menu a:focus {
+  background: rgba(255, 237, 230, 0.15);
+  color: var(--neo-text-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 10px rgba(170, 48, 0, 0.2);
+}
+
+.mm-menu .current-menu-item a,
+.mm-menu .current_page_item a {
+  background: rgba(255, 237, 230, 0.2);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Botón hamburguesa */
+.mm-header__toggle {
+  display: none !important;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--neo-text-primary);
+  font-size: 1.5rem;
+  z-index: 12;
+}
+
+.mm-header__toggle-icon::before {
+  content: "☰";
+  font-size: 1.5rem;
+  color: var(--neo-text-primary);
+}
+
+/* Efecto hover en todo el header */
+.mm-header:hover,
+.neo-header:hover {
+  box-shadow: 0 6px 25px rgba(170, 48, 0, 0.2);
+}
+
+/* Transiciones suaves */
+.mm-header,
+.neo-header,
+.mm-header__inner,
+.mm-logo img,
+.mm-menu a {
+  transition: all var(--transition-normal) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+  .mm-header,
+  .neo-header {
+    min-height: 45px !important;
+    max-height: 55px !important;
+    padding: 0.2rem 0 !important;
+  }
+
+  .mm-logo img,
+  .mm-logo-img {
+    max-height: 2.4rem !important;
+  }
+
+  .mm-menu {
+    gap: 0.5rem;
+  }
+
+  .mm-menu a {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .mm-header__inner {
+    padding: 0 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .mm-header,
+  .neo-header {
+    min-height: 35px !important;
+    max-height: 45px !important;
+    padding: 0.1rem 0 !important;
+  }
+
+  .mm-logo img,
+  .mm-logo-img {
+    max-height: 2.16rem !important;
+  }
+
+  .mm-menu {
+    gap: 0.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .mm-menu a {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .mm-header__inner {
+    padding: 0 0.5rem;
+  }
+}
+
+/* WordPress overrides */
+.mm-header *,
+.neo-header * {
+  box-sizing: border-box;
+}
+
+.mm-header,
+.neo-header,
+.mm-header__inner,
+#site-navigation,
+.mm-menu {
+  margin: 0 !important;
+}

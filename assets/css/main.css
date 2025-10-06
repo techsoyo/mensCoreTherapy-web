@@ -133,6 +133,7 @@ body.page-id-7 {
   /* fallback si la imagen no carga */
 }
 
+/* .mm-hero__video - YA NO SE USA, REEMPLAZADO POR IMAGEN DE FONDO
 .mm-hero__video {
   position: absolute;
   top: 0;
@@ -140,11 +141,10 @@ body.page-id-7 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* poner z-index >= 0 para que el vídeo aparezca por encima del fondo */
   z-index: 0;
   pointer-events: none;
-
 }
+*/
 
 .mm-hero__overlay {
   position: absolute;
@@ -540,7 +540,7 @@ p {
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1rem;
-  color: #333;
+  color: #fceeeb;
 }
 
 /* TEXTO DESTACADO */
@@ -786,3 +786,4 @@ i {
   }
 
 }
+

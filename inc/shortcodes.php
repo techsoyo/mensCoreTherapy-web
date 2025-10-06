@@ -2,10 +2,10 @@
 if (!defined('ABSPATH')) exit;
 
 add_shortcode('mm_hero', function($atts){
-    $atts = shortcode_atts([ 'video' => '' ], $atts);
+    $atts = shortcode_atts([ 'bg_image' => '' ], $atts);
     ob_start();
     get_template_part('template-parts/hero', null, [
-        'video_url' => esc_url($atts['video'])
+        'bg_image' => esc_url($atts['bg_image'])
     ]);
     return ob_get_clean();
 });
