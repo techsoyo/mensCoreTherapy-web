@@ -1,107 +1,178 @@
 <?php if (!defined('ABSPATH')) exit; ?>
-<section class="hero-section" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/torso.jpg'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 70vh; position: relative; color: white;">
-  <div class="hero-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
 
-  <div class="cards-container" style="position: relative; z-index: 1; padding: 5rem 1.25rem; max-width: 90rem; margin: 0 auto;">
-    <h1 style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem; text-shadow: 0.125rem 0.125rem 0.5rem rgba(0, 0, 0, 0.8); color: white;"><?php _e('Servicios', 'masajista-masculino'); ?></h1>
+<!-- Hero Section con nueva estructura ITCSS -->
+<section class="hero hero--servicios">
+  <div class="hero__bg" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/torso.jpg');"></div>
+  <div class="hero__overlay"></div>
 
-    <?php
-    // Obtener servicios específicos por IDs donde tenemos precios y duraciones
-    $servicio_ids = [145, 146, 147, 148];
+  <div class="hero__content">
+    <div class="container">
 
-    // Títulos fallback en caso de que no haya títulos en la base de datos
-    $titulos_fallback = [
-      145 => 'Masaje de Piedras Calientes',
-      146 => 'Masaje de Descarga',
-      147 => 'Masaje Relajante',
-      148 => 'Masaje Tantra'
-    ];
+      <!-- Título principal -->
+      <div class="text-center mb-xl">
+        <h1 class="hero__title text-white">
+          <?php _e('Servicios', 'masajista-masculino'); ?>
+        </h1>
+      </div>
 
-    // Descripciones fallback
-    $descripciones_fallback = [
-      145 => 'Piedras de basalto se calientan a 50-55°C y se colocan sobre chakra puntos clave (espalda, manos, pies). El calor penetra en profundidad, relajando la musculatura.',
-      146 => 'Trabajo profundo y preciso sobre grupos musculares exigidos. Dedos, antebrazos y codos se alternan para liberar contracturas, mejorar la circulación y acelerar la recuperación.',
-      147 => 'Un abrazo lento de manos expertas que se deslizan con aceite templado por todo tu cuerpo. La presión es suave, casi aérea, como si el tiempo se detuviera.',
-      148 => 'Un viaje lento y consciente en el que cada respiración guía tu energía hacia el placer. Con aceites tibios y movimientos ondulantes despertarás todos los rincones de tu piel.'
-    ];
+      <?php
+      // Obtener servicios de la base de datos usando la función actualizada
+      $servicios = get_servicios_data();
 
-    $q = new WP_Query([
-      'post_type'      => 'servicio',
-      'post__in'       => $servicio_ids,
-      'posts_per_page' => -1,
-      'post_status'    => 'publish',
-      'orderby'        => 'post__in',
-      'order'          => 'ASC',
-    ]);
+      if (!empty($servicios)) :
+      ?>
+        <!-- Grid de servicios con nueva estructura -->
+        <div class="services-grid grid grid--auto-fit gap-lg">
 
-    // Debug: mostrar información de la consulta
-    echo '<!-- DEBUG: Query found ' . $q->found_posts . ' posts -->';
+          <?php foreach ($servicios as $servicio) : ?>
+            <article class="card card--flip card--servicios"
+              data-servicio-id="<?php echo $servicio['id']; ?>">
 
-    if ($q->have_posts()) {
-      echo '<div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(23.5rem, 1fr)); gap: 2rem; max-width: 70rem; margin: 0 auto;">';
-      while ($q->have_posts()) {
-        $q->the_post();
-        $current_id = get_the_ID();
-        $price = get_post_meta($current_id, 'precio', true);
-        $dur   = get_post_meta($current_id, 'duracion', true);
+              <!-- Contenedor del flip -->
+              <div class="card__flip-inner">
 
-        // Debug: mostrar información de cada post
-        echo '<!-- DEBUG: Post ID=' . $current_id . ', Title=' . get_the_title() . ', Price=' . $price . ', Duration=' . $dur . ' -->';
-    ?>
-        <article class="service-card flip-card" onclick="this.classList.toggle('flipped')" style="perspective: 62.5rem; cursor: pointer; height: 25rem;">
-          <div class="flip-card-inner" style="position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d;">
+                <!-- Cara frontal -->
+                <div class="card__flip-front neo-surface">
 
-            <!-- CARA FRONTAL -->
-            <div class="flip-card-front" style="position: absolute; width: 100%; height: 100%; backface-visibility: hidden; background: rgba(255, 255, 255, 0.9); border-radius: 1rem; padding: 1.5rem; box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.2); backdrop-filter: blur(15px); color: #111; display: flex; flex-direction: column;">
-              <?php if (has_post_thumbnail()) : ?>
-                <div class="service-thumb" style="margin-bottom: 1rem; border-radius: 0.5rem; overflow: hidden; flex-shrink: 0;"><?php the_post_thumbnail('mm-card', array('style' => 'width: 100%; height: 12.5rem; object-fit: cover;')); ?></div>
-              <?php endif; ?>
-              <?php
-              $post_id = get_the_ID();
-              $titulo = get_the_title() ?: $titulos_fallback[$post_id];
-              $descripcion = get_the_excerpt() ?: $descripciones_fallback[$post_id];
-              ?>
-              <h3 class="service-title embossed-text" style="margin-bottom: 0.75rem; font-size: 1.2rem;"><?php echo esc_html($titulo); ?></h3>
-              <div class="service-excerpt" style="font-size: 0.9rem; line-height: 1.4; flex-grow: 1; overflow: hidden;"><?php echo esc_html($descripcion); ?></div>
-              <div style="margin-top: 1rem; font-size: 0.8rem; color: #666; font-style: italic;">Clic para más información</div>
-            </div>
+                  <!-- Imagen del servicio -->
+                  <?php if ($servicio['imagen']) : ?>
+                    <div class="card__image">
+                      <img src="<?php echo esc_url($servicio['imagen']); ?>"
+                        alt="<?php echo esc_attr($servicio['nombre']); ?>"
+                        class="img-cover">
+                    </div>
+                  <?php else : ?>
+                    <div class="card__image-placeholder flex flex--center">
+                      <i class="fa fa-spa text-primary text-2xl"></i>
+                    </div>
+                  <?php endif; ?>
 
-            <!-- CARA TRASERA -->
-            <div class="flip-card-back" style="position: absolute; width: 100%; height: 100%; backface-visibility: hidden; background: linear-gradient(135deg, #AA3000, #cc4000); border-radius: 1rem; padding: 1.5rem; box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.2); backdrop-filter: blur(15px); color: white; transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-              <h3 style="margin-bottom: 2rem; font-size: 1.4rem; color: white;"><?php echo esc_html($titulo); ?></h3>
+                  <!-- Contenido de la tarjeta -->
+                  <div class="card__content p-lg">
+                    <h3 class="card__title text-primary mb-sm">
+                      <?php echo esc_html($servicio['nombre']); ?>
+                    </h3>
 
-              <?php if ($price) : ?>
-                <div style="margin-bottom: 2.5rem;">
-                  <div style="font-size: 1rem; opacity: 0.9; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;">Precio</div>
-                  <div style="font-size: 3rem; font-weight: 100; line-height: 1;"><?php echo esc_html($price); ?></div>
+                    <div class="card__description text-body mb-md">
+                      <?php echo esc_html($servicio['descripcion']); ?>
+                    </div>
+
+                    <!-- Meta información -->
+                    <div class="card__meta flex flex--between flex--center">
+                      <?php if ($servicio['duracion']) : ?>
+                        <span class="text-sm text-muted">
+                          <i class="fa fa-clock-o mr-xs"></i>
+                          <?php echo esc_html($servicio['duracion']); ?>
+                        </span>
+                      <?php endif; ?>
+
+                      <span class="card__flip-hint text-xs text-primary">
+                        <?php _e('Clic para más información', 'masajista-masculino'); ?>
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              <?php endif; ?>
 
-              <?php if ($dur) : ?>
-                <div style="margin-bottom: 2.5rem;">
-                  <div style="font-size: 1rem; opacity: 0.9; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;">Duración</div>
-                  <div style="font-size: 1.8rem; font-weight: 100; line-height: 1;"><?php echo esc_html($dur); ?></div>
+                <!-- Cara trasera -->
+                <div class="card__flip-back neo-primary text-white">
+                  <div class="card__content p-lg flex flex--column h-full text-center">
+
+                    <h3 class="card__title mb-lg">
+                      <?php echo esc_html($servicio['nombre']); ?>
+                    </h3>
+
+                    <!-- Precio -->
+                    <?php if ($servicio['precio']) : ?>
+                      <div class="card__price-section mb-lg">
+                        <div class="text-sm opacity-90 mb-xs uppercase tracking-wide">
+                          <?php _e('Precio', 'masajista-masculino'); ?>
+                        </div>
+                        <div class="card__price text-4xl font-light">
+                          €<?php echo esc_html($servicio['precio']); ?>
+                        </div>
+                      </div>
+                    <?php endif; ?>
+
+                    <!-- Duración -->
+                    <?php if ($servicio['duracion']) : ?>
+                      <div class="card__duration-section mb-lg">
+                        <div class="text-sm opacity-90 mb-xs uppercase tracking-wide">
+                          <?php _e('Duración', 'masajista-masculino'); ?>
+                        </div>
+                        <div class="card__duration text-xl font-light">
+                          <?php echo esc_html($servicio['duracion']); ?>
+                        </div>
+                      </div>
+                    <?php endif; ?>
+
+                    <!-- Mensaje si no hay precio/duración -->
+                    <?php if (!$servicio['precio'] && !$servicio['duracion']) : ?>
+                      <div class="card__no-info mb-lg opacity-80 italic">
+                        <div><?php _e('Información', 'masajista-masculino'); ?></div>
+                        <div><?php _e('disponible próximamente', 'masajista-masculino'); ?></div>
+                      </div>
+                    <?php endif; ?>
+
+                    <!-- Botón de acción -->
+                    <div class="card__actions mt-auto">
+                      <a href="<?php echo esc_url(home_url('/reservas/')); ?>"
+                        class="btn btn--white btn--block mb-sm">
+                        <?php _e('Reservar Ahora', 'masajista-masculino'); ?>
+                      </a>
+                      <span class="card__flip-hint text-xs opacity-70">
+                        <?php _e('Clic para volver', 'masajista-masculino'); ?>
+                      </span>
+                    </div>
+
+                  </div>
                 </div>
-              <?php endif; ?>
 
-              <?php if (!$price && !$dur) : ?>
-                <div style="margin-bottom: 2rem; opacity: 0.8; font-style: italic;">
-                  <div>Información</div>
-                  <div>disponible próximamente</div>
-                </div>
-              <?php endif; ?>
+              </div>
+            </article>
+          <?php endforeach; ?>
 
-              <div style="margin-top: auto; font-size: 0.9rem; opacity: 0.8; font-style: italic;">Clic para volver</div>
-            </div>
-          </div>
-        </article>
-    <?php
-      }
-      echo '</div>';
-      wp_reset_postdata();
-    } else {
-      echo '<p>' . __('No hay servicios con precios y duraciones configurados.', 'masajista-masculino') . '</p>';
-    }
-    ?>
+        </div>
+
+      <?php else : ?>
+        <!-- Estado vacío -->
+        <div class="empty-state text-center py-xl">
+          <i class="fa fa-spa text-white text-4xl mb-md opacity-70"></i>
+          <h3 class="text-white mb-sm">
+            <?php _e('No hay servicios disponibles', 'masajista-masculino'); ?>
+          </h3>
+          <p class="text-white opacity-70">
+            <?php _e('Pronto tendremos nuevos servicios para ti.', 'masajista-masculino'); ?>
+          </p>
+        </div>
+      <?php endif; ?>
+
+    </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Manejar flip de tarjetas con nueva estructura
+    const flipCards = document.querySelectorAll('.card--flip');
+
+    flipCards.forEach(card => {
+      card.addEventListener('click', function(e) {
+        // No hacer flip si se hace clic en un botón o enlace
+        if (!e.target.closest('.btn') && !e.target.closest('a')) {
+          this.classList.toggle('is-flipped');
+        }
+      });
+
+      // Accesibilidad con teclado
+      card.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.classList.toggle('is-flipped');
+        }
+      });
+
+      // Hacer las tarjetas focusables
+      card.setAttribute('tabindex', '0');
+    });
+  });
+</script>

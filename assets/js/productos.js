@@ -1,6 +1,6 @@
 /**
  * JavaScript para la página de productos
- * Maneja efectos parallax, flip cards y mejoras de UX
+ * Adaptado para nueva estructura CSS ITCSS
  */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -26,14 +26,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     /**
-     * Efecto parallax suave en scroll
+     * Efecto parallax suave en scroll - adaptado para nueva estructura
      */
     function initParallaxEffect() {
         let ticking = false;
         
         function updateParallax() {
             const scrolled = window.pageYOffset;
-            const parallaxElement = document.querySelector('.productos-hero-section');
+            const parallaxElement = document.querySelector('.hero--productos');
             
             if (parallaxElement) {
                 // Efecto parallax más sutil para mejor rendimiento
@@ -58,10 +58,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     /**
-     * Mejorar accesibilidad de las flip cards
+     * Mejorar accesibilidad de las flip cards - nueva estructura CSS
      */
     function initFlipCardAccessibility() {
-        const flipCards = document.querySelectorAll('.producto-flip-card');
+        const flipCards = document.querySelectorAll('.card--flip');
         
         flipCards.forEach((card, index) => {
             // Hacer las cards accesibles por teclado
@@ -88,31 +88,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
-            // Manejar click
-            card.addEventListener('click', function() {
-                toggleFlipCard(this);
+            // Manejar click - evitar conflicto con botones
+            card.addEventListener('click', function(e) {
+                if (!e.target.closest('.btn')) {
+                    toggleFlipCard(this);
+                }
             });
             
             // Feedback visual en focus
             card.addEventListener('focus', function() {
-                this.style.outline = '3px solid #FF6C32';
-                this.style.outlineOffset = '4px';
+                this.classList.add('is-focused');
             });
             
             card.addEventListener('blur', function() {
-                this.style.outline = 'none';
+                this.classList.remove('is-focused');
             });
         });
     }
     
     /**
-     * Toggle del estado flip de una card
+     * Toggle del estado flip de una card - nueva estructura CSS
      */
     function toggleFlipCard(card) {
-        card.classList.toggle('flipped');
+        card.classList.toggle('is-flipped');
         
         // Actualizar aria-label
-        const isFlipped = card.classList.contains('flipped');
+        const isFlipped = card.classList.contains('is-flipped');
         const currentLabel = card.getAttribute('aria-label');
         const newLabel = isFlipped 
             ? currentLabel.replace('Click para ver detalles', 'Click para volver')
@@ -121,7 +122,11 @@ document.addEventListener('DOMContentLoaded', function() {
         card.setAttribute('aria-label', newLabel);
         
         // Anunciar cambio a lectores de pantalla
-        announceToScreenReader(isFlipped ? 'Detalles mostrados' : 'Vista principal');
+        if (window.MasajistaTheme && window.MasajistaTheme.announceToScreenReader) {
+            window.MasajistaTheme.announceToScreenReader(
+                isFlipped ? 'Detalles mostrados' : 'Vista principal'
+            );
+        }
     }
     
     /**
@@ -141,27 +146,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     /**
-     * Anunciar cambios a lectores de pantalla
-     */
-    function announceToScreenReader(message) {
-        const announcement = document.createElement('div');
-        announcement.setAttribute('aria-live', 'polite');
-        announcement.setAttribute('aria-atomic', 'true');
-        announcement.style.position = 'absolute';
-        announcement.style.left = '-10000px';
-        announcement.style.width = '1px';
-        announcement.style.height = '1px';
-        announcement.style.overflow = 'hidden';
-        announcement.textContent = message;
-        
-        document.body.appendChild(announcement);
-        
-        setTimeout(() => {
-            document.body.removeChild(announcement);
-        }, 1000);
-    }
-    
-    /**
      * Lazy loading de animaciones para mejor rendimiento
      */
     function initLazyAnimations() {
@@ -173,14 +157,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
+                    entry.target.classList.add('is-visible');
                     observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
         
         // Observar todas las cards para animación lazy
-        const cards = document.querySelectorAll('.producto-flip-card');
+        const cards = document.querySelectorAll('.card--flip');
         cards.forEach(card => {
             observer.observe(card);
         });
@@ -200,30 +184,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     /**
-     * Preloader para imagen de fondo
+     * Preloader para imagen de fondo - nueva estructura CSS
      */
     function initBackgroundPreloader() {
-        const heroSection = document.querySelector('.productos-hero-section');
+        const heroSection = document.querySelector('.hero--productos');
         
         if (heroSection) {
-            const bgImage = new Image();
-            const bgUrl = window.getComputedStyle(heroSection).backgroundImage;
+            const bgElement = heroSection.querySelector('.hero__bg');
             
-            if (bgUrl && bgUrl !== 'none') {
-                // Extraer URL de la imagen
-                const imageUrl = bgUrl.slice(4, -1).replace(/["']/g, "");
+            if (bgElement) {
+                const bgImage = new Image();
+                const bgUrl = window.getComputedStyle(bgElement).backgroundImage;
                 
-                bgImage.onload = function() {
-                    heroSection.classList.add('bg-loaded');
-                };
-                
-                bgImage.onerror = function() {
-                    console.warn('Error cargando imagen de fondo de productos');
-                    // Fallback: aplicar color de fondo
-                    heroSection.style.backgroundColor = '#FF6C32';
-                };
-                
-                bgImage.src = imageUrl;
+                if (bgUrl && bgUrl !== 'none') {
+                    // Extraer URL de la imagen
+                    const imageUrl = bgUrl.slice(4, -1).replace(/["']/g, "");
+                    
+                    bgImage.onload = function() {
+                        heroSection.classList.add('hero--bg-loaded');
+                    };
+                    
+                    bgImage.onerror = function() {
+                        console.warn('Error cargando imagen de fondo de productos');
+                        // Fallback: aplicar color de fondo
+                        bgElement.style.backgroundColor = 'var(--color-primary)';
+                    };
+                    
+                    bgImage.src = imageUrl;
+                }
             }
         }
     }
@@ -271,21 +259,20 @@ document.addEventListener('DOMContentLoaded', function() {
      */
     window.addEventListener('beforeunload', function() {
         // Limpiar event listeners si es necesario
-        const cards = document.querySelectorAll('.producto-flip-card');
+        const cards = document.querySelectorAll('.card--flip');
         cards.forEach(card => {
             card.removeEventListener('click', toggleFlipCard);
         });
     });
     
-    // Exponer funciones útiles globalmente si es necesario
+    // Exponer funciones útiles globalmente
     window.ProductosPage = {
-        toggleFlipCard: toggleFlipCard,
-        announceToScreenReader: announceToScreenReader
+        toggleFlipCard: toggleFlipCard
     };
 });
 
 /**
- * Utilidades adicionales
+ * Utilidades adicionales - adaptadas para nueva estructura
  */
 
 // Detectar soporte para efectos avanzados
@@ -302,7 +289,7 @@ if (!supportsAdvancedEffects()) {
 // Media query listener para cambios de orientación
 window.matchMedia('(orientation: portrait)').addEventListener('change', function(e) {
     // Reajustar grid si es necesario
-    const grid = document.querySelector('.productos-grid');
+    const grid = document.querySelector('.grid--auto-fit');
     if (grid && e.matches) {
         // Modo portrait - ajustar grid
         grid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(250px, 1fr))';
@@ -316,18 +303,18 @@ function isTouchDevice() {
 
 // Ajustar comportamiento para dispositivos táctiles
 if (isTouchDevice()) {
-    document.documentElement.classList.add('touch-device');
+    document.documentElement.classList.add('is-touch-device');
     
-    // En dispositivos táctiles, hacer que el primer toque muestre hover
-    const cards = document.querySelectorAll('.producto-flip-card');
+    // En dispositivos táctiles, mejorar la experiencia táctil
+    const cards = document.querySelectorAll('.card--flip');
     cards.forEach(card => {
         card.addEventListener('touchstart', function() {
-            this.classList.add('touch-hover');
+            this.classList.add('is-touch-active');
         }, { passive: true });
         
         card.addEventListener('touchend', function() {
             setTimeout(() => {
-                this.classList.remove('touch-hover');
+                this.classList.remove('is-touch-active');
             }, 300);
         }, { passive: true });
     });

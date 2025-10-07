@@ -150,7 +150,7 @@
 
 /* Front face */
 .flip-card-front {
-  background-image: url('../images/fonde-header.webp');
+  background-image: url('../../images/fonde-header.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -380,4 +380,6 @@
   .service-duration-amount {
     font-size: 1.3rem;
   }
-}x
+}
+
+x
